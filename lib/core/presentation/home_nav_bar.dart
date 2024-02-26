@@ -27,9 +27,10 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    // final Screenheight = MediaQuery.of(context).size.height;
-    // final Screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      resizeToAvoidBottomInset: true,
+      extendBody: true,
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -62,9 +63,7 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      resizeToAvoidBottomInset: true,
-      extendBody: true,
-      body: SafeArea(child: screens[_selectedIndex]),
+      body: screens[_selectedIndex],
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 5),
         child: SnakeNavigationBar.color(
