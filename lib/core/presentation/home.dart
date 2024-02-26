@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jeevan_diabetes_app/core/presentation/screens.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -8,7 +9,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<Widget> screens = [];
+  List<Widget> screens = [
+    const HomeScreen(),
+    const CategoryScreen(),
+    const AboutScreen(),
+    const ContactScreen(),
+  ];
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
