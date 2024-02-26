@@ -4,6 +4,7 @@ import 'package:jeevan_diabetes_app/core/presentation/screens.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
+import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -78,23 +79,21 @@ class _HomeState extends State<Home> {
           showSelectedLabels: true,
           snakeViewColor: const Color(0xff03a1e7),
           unselectedItemColor: Colors.white,
-          items: const [
+          items: [
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_outlined,
-              ),
+              icon: SvgPicture.asset(homeIcon),
               label: "Home",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.description_outlined),
+              icon: SvgPicture.asset(categoryIcon),
               label: "Category",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.info_outlined),
+              icon: SvgPicture.asset(aboutIcon),
               label: "About",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
+              icon: SvgPicture.asset(contactIcon),
               label: "Contact",
             ),
           ],
