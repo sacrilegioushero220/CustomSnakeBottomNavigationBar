@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:jeevan_diabetes_app/core/presentation/screens.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -47,9 +49,9 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.transparent,
         toolbarHeight: 70,
         centerTitle: true,
-        leading: const Icon(
-          Icons.apps_rounded,
-          color: Colors.white,
+        leading: Padding(
+          padding: const EdgeInsets.all(17),
+          child: SvgPicture.asset(snackBar),
         ),
         title: Text(
           "JEEVANS DIABETES & ENDORINOLOGY",
