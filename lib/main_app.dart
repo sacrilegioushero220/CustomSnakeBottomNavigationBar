@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'core/presentation/home.dart';
+import 'core/presentation/home_nav_bar.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});

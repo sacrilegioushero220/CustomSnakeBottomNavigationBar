@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_snake_navigationbar: ^0.6.1
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
