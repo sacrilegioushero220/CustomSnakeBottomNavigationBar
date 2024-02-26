@@ -6,3 +6,7 @@ String contactIcon = "assets/contact_icon_white.svg";
 String homeIcon = "assets/home_icon_white.svg";
 String searchLens = "assets/search_lens.svg";
 String youTubeIcon = "assets/youtube_icon_white.svg";
+String category = "assets/Category.svg";
+String about = "assets/About.svg";
+String contact = "assets/Contact.svg";
+String home = "assets/home.svg";

@@ -76,29 +76,31 @@ class _HomeState extends State<Home> {
             borderRadius: BorderRadius.all(Radius.circular(25)),
           ),
           behaviour: SnakeBarBehaviour.floating,
-          showSelectedLabels: true,
           snakeViewColor: const Color(0xff03a1e7),
           unselectedItemColor: Colors.white,
           items: [
             BottomNavigationBarItem(
-              icon: SvgPicture.asset(homeIcon),
+              icon: SvgPicture.asset(_selectedIndex == 0 ? home : homeIcon),
               label: "Home",
             ),
             BottomNavigationBarItem(
-              icon: SvgPicture.asset(categoryIcon),
+              icon: SvgPicture.asset(
+                  _selectedIndex == 1 ? category : categoryIcon),
               label: "Category",
             ),
             BottomNavigationBarItem(
-              icon: SvgPicture.asset(aboutIcon),
+              icon: SvgPicture.asset(_selectedIndex == 2 ? about : aboutIcon),
               label: "About",
             ),
             BottomNavigationBarItem(
-              icon: SvgPicture.asset(contactIcon),
+              icon:
+                  SvgPicture.asset(_selectedIndex == 3 ? contact : contactIcon),
               label: "Contact",
             ),
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
+          snakeShape: SnakeShape.custom,
         ),
       ),
     );
