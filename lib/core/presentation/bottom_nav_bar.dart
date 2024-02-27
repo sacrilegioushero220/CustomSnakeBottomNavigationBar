@@ -33,39 +33,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       extendBody: true,
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment(0.99, -0.15),
-              end: Alignment(-0.99, 0.15),
-              colors: [
-                Color.fromARGB(255, 28, 65, 146),
-                Color(0xff00aeef),
-              ],
-            ),
-          ),
-        ),
-        backgroundColor: Colors.transparent,
-        toolbarHeight: 70,
-        centerTitle: true,
-        leading: Padding(
-          padding: const EdgeInsets.all(17),
-          child: SvgPicture.asset(snackBar),
-        ),
-        title: Text(
-          "JEEVANS DIABETES & ENDORINOLOGY",
-          textAlign: TextAlign.center,
-          style: GoogleFonts.koulen(
-            textStyle: const TextStyle(
-              color: Colors.white,
-              fontSize: 21,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-        ),
-      ),
+      appBar: _buildAppBar(),
       body: screens[_selectedIndex],
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 5),
@@ -126,4 +94,39 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+}
+
+PreferredSizeWidget _buildAppBar() {
+  return AppBar(
+    flexibleSpace: Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment(0.99, -0.15),
+          end: Alignment(-0.99, 0.15),
+          colors: [
+            Color.fromARGB(255, 28, 65, 146),
+            Color(0xff00aeef),
+          ],
+        ),
+      ),
+    ),
+    backgroundColor: Colors.transparent,
+    toolbarHeight: 70,
+    centerTitle: true,
+    leading: Padding(
+      padding: const EdgeInsets.all(17),
+      child: SvgPicture.asset(snackBar),
+    ),
+    title: Text(
+      "JEEVANS DIABETES & ENDORINOLOGY",
+      textAlign: TextAlign.center,
+      style: GoogleFonts.koulen(
+        textStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 21,
+          fontWeight: FontWeight.w400,
+        ),
+      ),
+    ),
+  );
 }

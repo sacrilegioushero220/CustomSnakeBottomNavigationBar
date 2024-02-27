@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/presentation/bottom_nav_bar.dart';
 import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
