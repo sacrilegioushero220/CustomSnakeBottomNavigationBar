@@ -10,32 +10,59 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: [
           const CustomSearchBar(),
-          const SizedBox(
-            height: 10,
-          ),
-          ListView(
-            children: const [
-              ListTile(
-                title: Text("title"),
-                subtitle: Text("subtitle"),
-              ),
-              ListTile(
-                title: Text("title"),
-                subtitle: Text("subtitle"),
-              ),
-              ListTile(
-                title: Text("title"),
-                subtitle: Text("subtitle"),
-              ),
-              ListTile(
-                title: Text("title"),
-                subtitle: Text("subtitle"),
-              ),
-              ListTile(
-                title: Text("title"),
-                subtitle: Text("subtitle"),
-              ),
-            ],
+          Expanded(
+            child: ListView(
+              children: const [
+                ListTile(
+                  title: Text("title"),
+                  subtitle: Text("subtitle"),
+                ),
+                ListTile(
+                  title: Text("title"),
+                  subtitle: Text("subtitle"),
+                ),
+                ListTile(
+                  title: Text("title"),
+                  subtitle: Text("subtitle"),
+                ),
+                ListTile(
+                  title: Text("title"),
+                  subtitle: Text("subtitle"),
+                ),
+                ListTile(
+                  title: Text("title"),
+                  subtitle: Text("subtitle"),
+                ),
+                ListTile(
+                  title: Text("title"),
+                  subtitle: Text("subtitle"),
+                ),
+                ListTile(
+                  title: Text("title"),
+                  subtitle: Text("subtitle"),
+                ),
+                ListTile(
+                  title: Text("title"),
+                  subtitle: Text("subtitle"),
+                ),
+                ListTile(
+                  title: Text("title"),
+                  subtitle: Text("subtitle"),
+                ),
+                ListTile(
+                  title: Text("title"),
+                  subtitle: Text("subtitle"),
+                ),
+                ListTile(
+                  title: Text("title"),
+                  subtitle: Text("subtitle"),
+                ),
+                ListTile(
+                  title: Text("title"),
+                  subtitle: Text("subtitle"),
+                ),
+              ],
+            ),
           ),
         ],
       ),
