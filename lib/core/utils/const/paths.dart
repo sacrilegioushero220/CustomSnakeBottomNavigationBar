@@ -12,3 +12,8 @@ String contact = "assets/Contact.svg";
 String home = "assets/home.svg";
 String mainLogo = "assets/jeevans_logo.png";
 String splashBg = "assets/splash_bg.png";
+
+//Demo Pics
+String pic1 = "assets/pic1.png";
+String pic2 = "assets/pic2.png";
+String pic3 = "assets/pic3.png";

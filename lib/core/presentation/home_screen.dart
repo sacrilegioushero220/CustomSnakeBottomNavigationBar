@@ -1,5 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
 import 'package:jeevan_diabetes_app/core/utils/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,15 +12,15 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const CustomSearchBar(),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 18,
-              right: 18,
-            ),
-            child: Row(
+      body: Padding(
+        padding: const EdgeInsets.only(
+          left: 18,
+          right: 18,
+        ),
+        child: Column(
+          children: [
+            const CustomSearchBar(),
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
@@ -39,65 +43,16 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Expanded(
-            child: ListView(
-              children: const [
-                ListTile(
-                  title: Text("title"),
-                  subtitle: Text("subtitle"),
-                ),
-                ListTile(
-                  title: Text("title"),
-                  subtitle: Text("subtitle"),
-                ),
-                ListTile(
-                  title: Text("title"),
-                  subtitle: Text("subtitle"),
-                ),
-                ListTile(
-                  title: Text("title"),
-                  subtitle: Text("subtitle"),
-                ),
-                ListTile(
-                  title: Text("title"),
-                  subtitle: Text("subtitle"),
-                ),
-                ListTile(
-                  title: Text("title"),
-                  subtitle: Text("subtitle"),
-                ),
-                ListTile(
-                  title: Text("title"),
-                  subtitle: Text("subtitle"),
-                ),
-                ListTile(
-                  title: Text("title"),
-                  subtitle: Text("subtitle"),
-                ),
-                ListTile(
-                  title: Text("title"),
-                  subtitle: Text("subtitle"),
-                ),
-                ListTile(
-                  title: Text("title"),
-                  subtitle: Text("subtitle"),
-                ),
-                ListTile(
-                  title: Text("title"),
-                  subtitle: Text("subtitle"),
-                ),
-                ListTile(
-                  title: Text("title"),
-                  subtitle: Text("subtitle"),
-                ),
-              ],
+            const SizedBox(
+              height: 10,
             ),
-          ),
-        ],
+            Expanded(
+              child: ListView(
+                children: const [HomeTile(), HomeTile()],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
