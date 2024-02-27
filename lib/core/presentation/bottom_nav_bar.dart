@@ -81,31 +81,41 @@ class _HomeState extends State<Home> {
           unselectedItemColor: Colors.white,
           items: [
             BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                _selectedIndex == 0 ? home : homeIcon,
-                height: 15,
-              ),
+              icon: _selectedIndex == 0
+                  ? SvgPicture.asset(
+                      home,
+                      height: 15,
+                    )
+                  : SvgPicture.asset(homeIcon),
               label: "Home",
             ),
             BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                _selectedIndex == 1 ? category : categoryIcon,
-                height: 15,
-              ),
+              icon: _selectedIndex == 1
+                  ? SvgPicture.asset(
+                      category,
+                      height: 18,
+                    )
+                  : SvgPicture.asset(
+                      categoryIcon,
+                    ),
               label: "Category",
             ),
             BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                _selectedIndex == 2 ? about : aboutIcon,
-                height: 15,
-              ),
+              icon: _selectedIndex == 2
+                  ? SvgPicture.asset(
+                      about,
+                      height: 17,
+                    )
+                  : SvgPicture.asset(aboutIcon),
               label: "About",
             ),
             BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                _selectedIndex == 3 ? contact : contactIcon,
-                height: 15,
-              ),
+              icon: _selectedIndex == 3
+                  ? SvgPicture.asset(
+                      contact,
+                      height: 15,
+                    )
+                  : SvgPicture.asset(contactIcon),
               label: "Contact",
             ),
           ],
