@@ -4,7 +4,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
 
 class HomeTile extends StatelessWidget {
-  const HomeTile({super.key});
+  const HomeTile(
+      {super.key,
+      required this.tilePic,
+      required this.categoryTitle,
+      required this.title,
+      required this.subtitle});
+  final String tilePic;
+  final String categoryTitle;
+  final String title;
+  final String subtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +39,7 @@ class HomeTile extends StatelessWidget {
                     ),
                   ),
                   child: Image.asset(
-                    pic1,
+                    tilePic,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -54,7 +63,7 @@ class HomeTile extends StatelessWidget {
                           blueTick,
                         ),
                         Text(
-                          "Endocrinology",
+                          categoryTitle,
                           style: GoogleFonts.beVietnamPro(
                             color: const Color(0xFF8F89A6),
                             fontSize: 9,
@@ -116,20 +125,23 @@ class HomeTile extends StatelessWidget {
           const SizedBox(
             height: 40,
           ),
-          Text(
-            "What is endocrinology?",
-            style: GoogleFonts.beVietnamPro(
-              color: Colors.black,
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              height: 0.05,
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              title,
+              style: GoogleFonts.beVietnamPro(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                height: 0.05,
+              ),
             ),
           ),
           const SizedBox(
             height: 25,
           ),
           Text(
-            'Dr. Jeevan Joseph, MBBS, MD (Gen Med)',
+            subtitle,
             style: GoogleFonts.beVietnamPro(
               color: const Color(0xFFA6A6A6),
               fontSize: 12,

@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
 import 'package:jeevan_diabetes_app/core/utils/widgets/widgets.dart';
@@ -48,7 +45,26 @@ class HomeScreen extends StatelessWidget {
             ),
             Expanded(
               child: ListView(
-                children: const [HomeTile(), HomeTile()],
+                children: [
+                  HomeTile(
+                    tilePic: pic1,
+                    categoryTitle: "Endocrinology",
+                    title: "What is endocrinology?",
+                    subtitle: "Dr. Jeevan Joseph, MBBS, MD (Gen Med)",
+                  ),
+                  HomeTile(
+                    tilePic: pic2,
+                    categoryTitle: "Thyroid Care",
+                    title: "Natural Remedies for Hypothyroidism",
+                    subtitle: "Dr. Jeevan Joseph, MBBS, MD (Gen Med)",
+                  ),
+                  HomeTile(
+                    tilePic: pic3,
+                    categoryTitle: "Diabetes Care",
+                    title: "പ്രമേഹം തടയാം, 5 മാർഗ്ഗങ്ങൾ ",
+                    subtitle: "Dr. Jeevan Joseph, MBBS, MD (Gen Med)",
+                  ),
+                ],
               ),
             ),
           ],

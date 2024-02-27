@@ -117,14 +117,18 @@ PreferredSizeWidget _buildAppBar() {
       padding: const EdgeInsets.all(17),
       child: SvgPicture.asset(snackBar),
     ),
-    title: Text(
-      "JEEVANS DIABETES & ENDOCRINOLOGY",
-      textAlign: TextAlign.center,
-      style: GoogleFonts.koulen(
-        textStyle: const TextStyle(
-          color: Colors.white,
-          fontSize: 21,
-          fontWeight: FontWeight.w400,
+    title: FittedBox(
+      fit:
+          BoxFit.scaleDown, // Scale down the text to fit within available space
+      child: Text(
+        "JEEVANS DIABETES & ENDOCRINOLOGY",
+        textAlign: TextAlign.center,
+        style: GoogleFonts.koulen(
+          textStyle: const TextStyle(
+            color: Colors.white,
+            fontSize: 21,
+            fontWeight: FontWeight.w400,
+          ),
         ),
       ),
     ),
