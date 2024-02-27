@@ -70,6 +70,7 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 5),
         child: SnakeNavigationBar.color(
+          height: 50,
           padding: const EdgeInsets.all(12),
           backgroundColor: const Color(0xff242a2f),
           shape: const RoundedRectangleBorder(
@@ -80,21 +81,31 @@ class _HomeState extends State<Home> {
           unselectedItemColor: Colors.white,
           items: [
             BottomNavigationBarItem(
-              icon: SvgPicture.asset(_selectedIndex == 0 ? home : homeIcon),
+              icon: SvgPicture.asset(
+                _selectedIndex == 0 ? home : homeIcon,
+                height: 15,
+              ),
               label: "Home",
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
-                  _selectedIndex == 1 ? category : categoryIcon),
+                _selectedIndex == 1 ? category : categoryIcon,
+                height: 15,
+              ),
               label: "Category",
             ),
             BottomNavigationBarItem(
-              icon: SvgPicture.asset(_selectedIndex == 2 ? about : aboutIcon),
+              icon: SvgPicture.asset(
+                _selectedIndex == 2 ? about : aboutIcon,
+                height: 15,
+              ),
               label: "About",
             ),
             BottomNavigationBarItem(
-              icon:
-                  SvgPicture.asset(_selectedIndex == 3 ? contact : contactIcon),
+              icon: SvgPicture.asset(
+                _selectedIndex == 3 ? contact : contactIcon,
+                height: 15,
+              ),
               label: "Contact",
             ),
           ],

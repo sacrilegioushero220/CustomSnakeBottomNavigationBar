@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'core/presentation/home_nav_bar.dart';
+import 'package:jeevan_diabetes_app/core/presentation/screens.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -8,7 +7,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Home(),
+      home: SplashScreen(),
     );
   }
 }
