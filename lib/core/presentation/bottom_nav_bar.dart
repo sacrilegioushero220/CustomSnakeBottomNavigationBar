@@ -118,7 +118,7 @@ PreferredSizeWidget _buildAppBar() {
       child: SvgPicture.asset(snackBar),
     ),
     title: Text(
-      "JEEVANS DIABETES & ENDORINOLOGY",
+      "JEEVANS DIABETES & ENDOCRINOLOGY",
       textAlign: TextAlign.center,
       style: GoogleFonts.koulen(
         textStyle: const TextStyle(
