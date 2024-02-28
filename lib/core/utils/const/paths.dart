@@ -25,3 +25,13 @@ String dem2 = "assets/dem2.png";
 String dem3 = "assets/dem3.png";
 String dem4 = "assets/dem4.png";
 String dem5 = "assets/dem5.png";
+
+//About Screen
+String hospitalPic = "assets/hospitalPic.png";
+String facebookIcon = "assets/facebook_icon_white.svg";
+String inaugurationPic = "assets/inaugurationPic.png";
+String mapPic = "assets/mapPic.png";
+String mobileIcon = "assets/mobile_icon.svg";
+String telephoneIcon = "assets/telephone_icon.svg";
+String instaIconWhite = "assets/insta_icon_white.svg";
+String youtubeIconWhite2 = "assets/youtube_icon_white_2.svg";
