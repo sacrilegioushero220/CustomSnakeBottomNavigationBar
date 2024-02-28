@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 import 'package:jeevan_diabetes_app/core/utils/widgets/category_tile.dart';
 
