@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:jeevan_diabetes_app/core/presentation/screens.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class Home extends StatefulWidget {
@@ -33,7 +31,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       extendBody: true,
-      appBar: _buildAppBar(),
+      appBar: customAppBar(),
       body: screens[_selectedIndex],
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 5),
@@ -94,43 +92,4 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-}
-
-PreferredSizeWidget _buildAppBar() {
-  return AppBar(
-    flexibleSpace: Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment(0.99, -0.15),
-          end: Alignment(-0.99, 0.15),
-          colors: [
-            Color.fromARGB(255, 28, 65, 146),
-            Color(0xff00aeef),
-          ],
-        ),
-      ),
-    ),
-    backgroundColor: Colors.transparent,
-    toolbarHeight: 70,
-    centerTitle: true,
-    leading: Padding(
-      padding: const EdgeInsets.all(17),
-      child: SvgPicture.asset(snackBar),
-    ),
-    title: FittedBox(
-      fit:
-          BoxFit.scaleDown, // Scale down the text to fit within available space
-      child: Text(
-        "JEEVANS DIABETES & ENDOCRINOLOGY",
-        textAlign: TextAlign.center,
-        style: GoogleFonts.koulen(
-          textStyle: const TextStyle(
-            color: Colors.white,
-            fontSize: 21,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-      ),
-    ),
-  );
 }
