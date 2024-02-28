@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class AboutScreen extends StatelessWidget {
@@ -18,17 +17,8 @@ class AboutScreen extends StatelessWidget {
           children: [
             const CustomSearchBar(),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  "Home",
-                  style: GoogleFonts.beVietnamPro(
-                    color: const Color(0xFFA6A6A6),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    height: 0,
-                  ),
-                ),
                 Text(
                   "About",
                   style: GoogleFonts.beVietnamPro(

@@ -35,3 +35,6 @@ String mobileIcon = "assets/mobile_icon.svg";
 String telephoneIcon = "assets/telephone_icon.svg";
 String instaIconWhite = "assets/insta_icon_white.svg";
 String youtubeIconWhite2 = "assets/youtube_icon_white_2.svg";
+
+//Contact Screen
+   

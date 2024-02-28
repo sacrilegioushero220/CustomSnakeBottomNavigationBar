@@ -18,24 +18,24 @@ class CategoryScreen extends StatelessWidget {
           children: [
             const CustomSearchBar(),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                TextButton(
-                  style: ButtonStyle(
-                    foregroundColor:
-                        MaterialStateProperty.all<Color?>(Colors.blue),
-                    overlayColor: MaterialStateProperty.all<Color>(Colors.grey),
-                  ),
-                  child: Text(
-                    "Back",
-                    style: GoogleFonts.beVietnamPro(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      height: 0,
-                    ),
-                  ),
-                  onPressed: () {},
-                ),
+                // TextButton(
+                //   style: ButtonStyle(
+                //     foregroundColor:
+                //         MaterialStateProperty.all<Color?>(Colors.blue),
+                //     overlayColor: MaterialStateProperty.all<Color>(Colors.grey),
+                //   ),
+                //   child: Text(
+                //     "Back",
+                //     style: GoogleFonts.beVietnamPro(
+                //       fontSize: 14,
+                //       fontWeight: FontWeight.w500,
+                //       height: 0,
+                //     ),
+                //   ),
+                //   onPressed: () {},
+                // ),
                 Text(
                   "Category",
                   style: GoogleFonts.beVietnamPro(
