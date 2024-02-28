@@ -27,6 +27,7 @@ class HomeTile extends StatelessWidget {
               Align(
                 alignment: Alignment.center,
                 child: Container(
+                  width: MediaQuery.of(context).size.width,
                   height: 337,
                   decoration: ShapeDecoration(
                     gradient: LinearGradient(
@@ -40,7 +41,7 @@ class HomeTile extends StatelessWidget {
                   ),
                   child: Image.asset(
                     tilePic,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
@@ -55,12 +56,14 @@ class HomeTile extends StatelessWidget {
                     color: const Color(0x93ffffff),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(11, 8.0, 12, 8.0),
+                    padding: const EdgeInsets.fromLTRB(11, 8.0, 0, 8.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SvgPicture.asset(
                           blueTick,
+                        ),
+                        const SizedBox(
+                          width: 1,
                         ),
                         Text(
                           categoryTitle,
