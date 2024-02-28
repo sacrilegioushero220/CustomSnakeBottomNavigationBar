@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class AboutScreen extends StatelessWidget {
@@ -44,7 +45,23 @@ class AboutScreen extends StatelessWidget {
             ),
             Expanded(
               child: ListView(
-                children: const [],
+                children: [
+                  AboutTile(
+                    title:
+                        "Jeevans Diabetes and Endocrinology Speciality Clinic",
+                    subtitle: "By Dr. Jeevan Joseph",
+                    content:
+                        "Jeevans Diabetes and Endocrine centre is a center of excellence in diabetes and hormonal care, started by Dr. Jeevan Joseph who is an Endocrinologist trained in the United Kingdom and has returned to Kottayam with a vision to bring international expertise and experience home.",
+                    image: hospitalPic,
+                  ),
+                  AboutTile(
+                      title:
+                          "Inaguration of Jeevans Diabetes and Endocrine Centre",
+                      subtitle: "",
+                      image: inaugurationPic,
+                      content:
+                          "by Shri Suresh Kurup, Hon Ettumanoor MLA and Ms.Sikha Surendran IAS, Assistant Collector, Kottayam")
+                ],
               ),
             ),
           ],
