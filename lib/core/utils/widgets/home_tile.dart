@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
+import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class HomeTile extends StatelessWidget {
   const HomeTile(
@@ -84,38 +84,23 @@ class HomeTile extends StatelessWidget {
               Positioned(
                 right: 30,
                 bottom: 19,
-                child: Container(
-                  width: 157,
-                  height: 63,
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFF03A1E7),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(31.50),
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Container(
+                    width: 157,
+                    height: 63,
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFF03A1E7),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(31.50),
+                      ),
                     ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 20,
-                      right: 20,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Watch Now",
-                          style: GoogleFonts.beVietnamPro(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            height: 0,
-                          ),
-                        ),
-                        const Icon(
-                          Icons.play_arrow,
-                          size: 30,
-                          color: Colors.white,
-                        )
-                      ],
+                    child: const Padding(
+                      padding: EdgeInsets.only(
+                        left: 20,
+                        right: 20,
+                      ),
+                      child: CustomRoundedButton(),
                     ),
                   ),
                 ),

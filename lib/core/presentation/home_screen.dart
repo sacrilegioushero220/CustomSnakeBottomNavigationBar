@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
-import 'package:jeevan_diabetes_app/core/utils/widgets/widgets.dart';
+import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
