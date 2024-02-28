@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class AboutScreen extends StatelessWidget {
@@ -45,30 +44,7 @@ class AboutScreen extends StatelessWidget {
             ),
             Expanded(
               child: ListView(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 438,
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5)),
-                      shadows: const [
-                        BoxShadow(
-                          color: Color(0x1E000000),
-                          blurRadius: 5,
-                          offset: Offset(0, 1),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        CustomImageCard(image: hospitalPic),
-                      ],
-                    ),
-                  )
-                ],
+                children: const [],
               ),
             ),
           ],

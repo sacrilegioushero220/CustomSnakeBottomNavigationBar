@@ -5,3 +5,4 @@ export 'widgets/custom_rounded_button.dart';
 export 'widgets/custom_app_bar.dart';
 export 'widgets/video_tile_card.dart';
 export 'widgets/custom_image_card.dart';
+export 'widgets/about_tile.dart';
