@@ -45,11 +45,27 @@ class ContactScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 30,
+              height: 10,
             ),
             Expanded(
               child: ListView(
-                children: [_supportCard(context)],
+                children: [
+                  const SupportCard(),
+                  const SizedBox(height: 12),
+                  const SocialMediaCard(),
+                  const SizedBox(height: 12),
+                  Text(
+                    'Vimala Hospital Complex, M.C. Road, Ettumanoor\nKottayam 686631, Kerala - India',
+                    maxLines: 3,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.beVietnamPro(
+                      color: const Color(0xFF242A2F),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w300,
+                      height: 1.11,
+                    ),
+                  )
+                ],
               ),
             ),
           ],
