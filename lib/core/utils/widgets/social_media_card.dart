@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
@@ -10,7 +9,7 @@ class SocialMediaCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 391,
+      width: MediaQuery.of(context).size.width,
       height: 225,
       decoration: ShapeDecoration(
         color: Colors.white,

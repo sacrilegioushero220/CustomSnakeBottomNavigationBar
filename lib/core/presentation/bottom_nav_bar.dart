@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
               icon: _selectedIndex == 0
                   ? SvgPicture.asset(
                       home,
-                      height: 15,
+                      height: 13,
                     )
                   : SvgPicture.asset(homeIcon),
               label: "Home",
@@ -59,7 +59,7 @@ class _HomeState extends State<Home> {
               icon: _selectedIndex == 1
                   ? SvgPicture.asset(
                       category,
-                      height: 18,
+                      height: 15,
                     )
                   : SvgPicture.asset(
                       categoryIcon,
@@ -70,7 +70,7 @@ class _HomeState extends State<Home> {
               icon: _selectedIndex == 2
                   ? SvgPicture.asset(
                       about,
-                      height: 17,
+                      height: 14,
                     )
                   : SvgPicture.asset(aboutIcon),
               label: "About",
@@ -79,7 +79,7 @@ class _HomeState extends State<Home> {
               icon: _selectedIndex == 3
                   ? SvgPicture.asset(
                       contact,
-                      height: 15,
+                      height: 13,
                     )
                   : SvgPicture.asset(contactIcon),
               label: "Contact",
