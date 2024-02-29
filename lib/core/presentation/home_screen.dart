@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jeevan_diabetes_app/core/presentation/video_detail_screen.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -50,6 +51,12 @@ class HomeScreen extends StatelessWidget {
                     categoryTitle: "Endocrinology",
                     title: "What is endocrinology?",
                     subtitle: "Dr. Jeevan Joseph, MBBS, MD (Gen Med)",
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (ctx) => const VideoDetailScreen()));
+                    },
                   ),
                   HomeTile(
                     tilePic: pic2,

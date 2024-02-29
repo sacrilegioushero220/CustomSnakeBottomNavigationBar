@@ -3,16 +3,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class HomeTile extends StatelessWidget {
-  const HomeTile(
-      {super.key,
-      required this.tilePic,
-      required this.categoryTitle,
-      required this.title,
-      required this.subtitle});
+  const HomeTile({
+    super.key,
+    required this.tilePic,
+    required this.categoryTitle,
+    required this.title,
+    required this.subtitle,
+    this.onTap,
+  });
   final String tilePic;
   final String categoryTitle;
   final String title;
   final String subtitle;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +27,7 @@ class HomeTile extends StatelessWidget {
           VideoTileCard(
             tilePic: tilePic,
             categoryTitle: categoryTitle,
+            onTap: onTap,
           ),
           const SizedBox(
             height: 40,

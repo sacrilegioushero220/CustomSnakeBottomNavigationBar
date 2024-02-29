@@ -8,10 +8,12 @@ class VideoTileCard extends StatelessWidget {
     super.key,
     required this.tilePic,
     required this.categoryTitle,
+    this.onTap,
   });
 
   final String tilePic;
   final String categoryTitle;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -80,25 +82,8 @@ class VideoTileCard extends StatelessWidget {
         Positioned(
           right: 30,
           bottom: 19,
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Container(
-              width: 145,
-              height: 50,
-              decoration: ShapeDecoration(
-                color: const Color(0xFF03A1E7),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(31.50),
-                ),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.only(
-                  left: 20,
-                  right: 10,
-                ),
-                child: CustomRoundedButton(),
-              ),
-            ),
+          child: CustomRoundedButton(
+            onTap: onTap,
           ),
         )
       ],
