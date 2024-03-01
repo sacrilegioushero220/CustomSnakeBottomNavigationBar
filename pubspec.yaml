@@ -7,15 +7,20 @@ environment:
   sdk: '>=3.3.0 <4.0.0'
 
 dependencies:
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.4
   flutter_snake_navigationbar: ^0.6.1
   flutter_svg: ^2.0.10+1
   google_fonts: ^6.1.0
+  json_annotation: ^4.8.1
+  json_serializable: ^6.7.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
   flutter_lints: ^3.0.0
 
 flutter:
