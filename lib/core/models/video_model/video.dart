@@ -23,7 +23,7 @@ class Video extends Equatable {
   @JsonKey(name: 'home_display')
   final String? homeDisplay;
   final String? priority;
-  final String? status;
+  final bool? status;
   @JsonKey(name: 'category_name')
   final String? categoryName;
 

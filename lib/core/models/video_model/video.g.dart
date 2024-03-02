@@ -18,7 +18,7 @@ Video _$VideoFromJson(Map<String, dynamic> json) => Video(
       videoId: json['video_id'] as String?,
       homeDisplay: json['home_display'] as String?,
       priority: json['priority'] as String?,
-      status: json['status'] as String?,
+      status: json['status'] as bool?,
       categoryName: json['category_name'] as String?,
     );
 
