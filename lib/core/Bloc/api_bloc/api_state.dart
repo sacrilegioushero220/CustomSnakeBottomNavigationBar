@@ -9,4 +9,12 @@ sealed class ApiState extends Equatable {
 
 final class ApiInitialState extends ApiState {}
 
-final class ApisuccessState extends ApiState {}
+final class ApiLoadingState extends ApiState {}
+
+final class ApiSuccessState extends ApiState {
+  final List<Video> fetchedData;
+
+  const ApiSuccessState({required this.fetchedData});
+}
+
+final class ApiErrorState extends ApiState {}

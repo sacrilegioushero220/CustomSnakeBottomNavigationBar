@@ -7,36 +7,33 @@ part 'video.g.dart';
 class Video extends Equatable {
   final String? id;
   final String? category;
-  @JsonKey(name: 'sub_category')
-  final String? subCategory;
   @JsonKey(name: 'video_title')
   final String? videoTitle;
   @JsonKey(name: 'posted_by')
   final String? postedBy;
   @JsonKey(name: 'video_description')
   final String? videoDescription;
+  @JsonKey(name: 'video_path')
   final String? videos;
   @JsonKey(name: 'video_image')
   final String? videoImage;
-  @JsonKey(name: 'video_id')
-  final String? videoId;
   @JsonKey(name: 'home_display')
   final String? homeDisplay;
+  @JsonKey(name: 'priority')
   final String? priority;
-  final bool? status;
+  @JsonKey(name: 'status')
+  final String? status;
   @JsonKey(name: 'category_name')
   final String? categoryName;
 
   const Video({
     this.id,
     this.category,
-    this.subCategory,
     this.videoTitle,
     this.postedBy,
     this.videoDescription,
     this.videos,
     this.videoImage,
-    this.videoId,
     this.homeDisplay,
     this.priority,
     this.status,
@@ -52,13 +49,11 @@ class Video extends Equatable {
     return [
       id,
       category,
-      subCategory,
       videoTitle,
       postedBy,
       videoDescription,
       videos,
       videoImage,
-      videoId,
       homeDisplay,
       priority,
       status,

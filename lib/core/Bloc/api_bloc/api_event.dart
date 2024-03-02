@@ -9,4 +9,4 @@ sealed class ApiEvent extends Equatable {
 
 class ApiInitialEvent extends ApiEvent {}
 
-class ApiInitialFetchEvent extends ApiEvent {}
+class ApiPopularVideosFetchEvent extends ApiEvent {}
