@@ -36,7 +36,7 @@ class VideoTileCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(21),
                 ),
               ),
-              child: Image.asset(
+              child: Image.network(
                 tilePic,
                 fit: BoxFit.fill,
               ),

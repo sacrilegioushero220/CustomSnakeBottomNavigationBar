@@ -25,7 +25,7 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
       final List<Video> popularVideos = await apiService.fetchPopularVideos();
       // Emit success state with the fetched videos
       print("popularVideos: $popularVideos");
-      emit(ApiSuccessState(fetchedData: popularVideos));
+      emit(ApiSuccessState(video: popularVideos));
     } catch (e, stackTrace) {
       // Emit error state if an exception occurs
       emit(ApiErrorState());

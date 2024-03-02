@@ -47,33 +47,40 @@ class HomeScreen extends StatelessWidget {
               height: 10,
             ),
             Expanded(
-              child: ListView(
-                children: [
-                  HomeTile(
-                    tilePic: pic1,
-                    categoryTitle: "Endocrinology",
-                    title: "What is endocrinology?",
-                    subtitle: "Dr. Jeevan Joseph, MBBS, MD (Gen Med)",
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (ctx) => const VideoDetailScreen()));
-                    },
-                  ),
-                  HomeTile(
-                    tilePic: pic2,
-                    categoryTitle: "Thyroid Care",
-                    title: "Natural Remedies for Hypothyroidism",
-                    subtitle: "Dr. Jeevan Joseph, MBBS, MD (Gen Med)",
-                  ),
-                  HomeTile(
-                    tilePic: pic3,
-                    categoryTitle: "Diabetes Care",
-                    title: "പ്രമേഹം തടയാം, 5 മാർഗ്ഗങ്ങൾ ",
-                    subtitle: "Dr. Jeevan Joseph, MBBS, MD (Gen Med)",
-                  ),
-                ],
+              child: BlocBuilder<ApiBloc, ApiState>(
+                builder: (context, state) {
+                  if (state is ApiLoadingState) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state is ApiSuccessState) {
+                    // Assuming you have a list of Video objects in state
+                    final videos = state.video;
+                    return ListView.builder(
+                      itemCount: videos.length,
+                      itemBuilder: (context, index) {
+                        final video = videos[index];
+                        return HomeTile(
+                          tilePic: video.videoImage ?? "",
+                          categoryTitle: video.categoryName ?? '',
+                          title: video.videoTitle ?? '',
+                          subtitle: video.postedBy ?? '',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (ctx) => const VideoDetailScreen(),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    );
+                  } else {
+                    // Handle error state
+                    return const Center(
+                      child: Text('Failed to fetch videos'),
+                    );
+                  }
+                },
               ),
             ),
           ],

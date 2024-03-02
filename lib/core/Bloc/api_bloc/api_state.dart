@@ -12,9 +12,9 @@ final class ApiInitialState extends ApiState {}
 final class ApiLoadingState extends ApiState {}
 
 final class ApiSuccessState extends ApiState {
-  final List<Video> fetchedData;
+  final List<Video> video;
 
-  const ApiSuccessState({required this.fetchedData});
+  const ApiSuccessState({required this.video});
 }
 
 final class ApiErrorState extends ApiState {}
