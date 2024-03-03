@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jeevan_diabetes_app/core/models/video_model/video.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class VideoDetailScreen extends StatelessWidget {
-  const VideoDetailScreen({super.key});
+  final Video video;
+  const VideoDetailScreen({super.key, required this.video});
 
   @override
   Widget build(BuildContext context) {
@@ -53,11 +55,10 @@ class VideoDetailScreen extends StatelessWidget {
               child: ListView(
                 children: [
                   HomeTile(
-                    tilePic: pic1,
-                    categoryTitle: "Endocrinology",
-                    title: "What is endocrinology?",
-                    subtitle: "Dr. Jeevan Joseph, MBBS, MD (Gen Med)",
-                    onTap: () {},
+                    tilePic: video.videoImage ?? "",
+                    categoryTitle: video.categoryName ?? '',
+                    title: video.videoTitle ?? '',
+                    subtitle: video.postedBy ?? '',
                   ),
                   const SizedBox(
                     height: 50,
@@ -78,8 +79,7 @@ class VideoDetailScreen extends StatelessWidget {
                             ),
                           ),
                           TextSpan(
-                            text:
-                                '\nEndocrinology is the study of the endocrine system in the human body. This is a system of glands which secrete hormones. Hormones are chemicals that affect the actions of different organ systems in the body. Examples include thyroid hormone, growth hormone, and insulin.',
+                            text: '\n${video.videoDescription}',
                             style: GoogleFonts.beVietnamPro(
                               color: const Color(0xFF242A2F),
                               fontSize: 14,

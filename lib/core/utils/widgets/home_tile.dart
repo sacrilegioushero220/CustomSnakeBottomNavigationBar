@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class HomeTile extends StatelessWidget {
@@ -16,7 +17,6 @@ class HomeTile extends StatelessWidget {
   final String title;
   final String subtitle;
   final void Function()? onTap;
-
   @override
   Widget build(BuildContext context) {
     return Padding(

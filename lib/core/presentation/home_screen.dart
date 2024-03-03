@@ -67,7 +67,9 @@ class HomeScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (ctx) => const VideoDetailScreen(),
+                                builder: (ctx) => VideoDetailScreen(
+                                  video: video,
+                                ),
                               ),
                             );
                           },

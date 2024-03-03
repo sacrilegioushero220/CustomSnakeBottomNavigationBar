@@ -8,7 +8,7 @@ class VideoTileCard extends StatelessWidget {
     super.key,
     required this.tilePic,
     required this.categoryTitle,
-    this.onTap,
+    required this.onTap,
   });
 
   final String tilePic;
@@ -30,7 +30,10 @@ class VideoTileCard extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: const Alignment(0.03, 1.00),
                   end: const Alignment(-0.03, -1),
-                  colors: [Colors.black, Colors.black.withOpacity(0)],
+                  colors: [
+                    Colors.black,
+                    Colors.black.withOpacity(0),
+                  ],
                 ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(21),
@@ -38,7 +41,7 @@ class VideoTileCard extends StatelessWidget {
               ),
               child: Image.network(
                 tilePic,
-                fit: BoxFit.fill,
+                fit: BoxFit.none,
               ),
             ),
           ),
