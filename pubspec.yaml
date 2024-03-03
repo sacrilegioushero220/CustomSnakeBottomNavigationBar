@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.4
+  flutter_html: ^3.0.0-beta.2
   flutter_snake_navigationbar: ^0.6.1
   flutter_svg: ^2.0.10+1
   google_fonts: ^6.1.0
