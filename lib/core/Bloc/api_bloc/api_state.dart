@@ -36,3 +36,11 @@ final class AboutUsSuccessState extends ApiState {
 
   const AboutUsSuccessState({required this.aboutUs});
 }
+
+final class ContactUsSuccessState extends ApiState {
+  @override
+  List<Object> get props => [contactUs];
+  final ContactUs contactUs;
+
+  const ContactUsSuccessState({required this.contactUs});
+}

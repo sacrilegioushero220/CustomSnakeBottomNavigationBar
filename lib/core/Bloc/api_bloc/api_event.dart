@@ -14,3 +14,5 @@ class PopularVideosFetchEvent extends ApiEvent {}
 class CategoryListFetchEvent extends ApiEvent {}
 
 class AboutUsFetchEvent extends ApiEvent {}
+
+class ContactUsFetchEvent extends ApiEvent {}

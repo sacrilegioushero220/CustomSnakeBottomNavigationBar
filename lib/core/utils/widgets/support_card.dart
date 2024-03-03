@@ -4,7 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class SupportCard extends StatelessWidget {
-  const SupportCard({super.key});
+  final String phone;
+  final String mobile;
+  final String googleMap;
+  const SupportCard(
+      {super.key,
+      required this.phone,
+      required this.mobile,
+      required this.googleMap});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +66,7 @@ class SupportCard extends StatelessWidget {
                   height: 15,
                 ),
                 Text(
-                  '0481-2535354',
+                  phone,
                   style: GoogleFonts.beVietnamPro(
                     color: const Color(0xFF4A4A4A),
                     fontSize: 16,
@@ -99,7 +106,7 @@ class SupportCard extends StatelessWidget {
                   height: 15,
                 ),
                 Text(
-                  '7034553548',
+                  mobile,
                   style: GoogleFonts.beVietnamPro(
                     color: const Color(0xFF4A4A4A),
                     fontSize: 16,

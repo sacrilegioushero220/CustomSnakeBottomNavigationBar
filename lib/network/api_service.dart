@@ -37,6 +37,16 @@ class ApiService {
     return [aboutUs];
   }
 
+  Future<ContactUs> fetchContactUs() async {
+    final response = await _get(contactUsUri);
+    // Parse the JSON response into a list of AboutUs
+
+    final Map<String, dynamic> responseData =
+        json.decode(response.body)['data']['CONTACTUS'];
+    final contactUs = ContactUs.fromJson(responseData);
+    return contactUs;
+  }
+
   // Generic method to perform HTTP GET requests
   Future<http.Response> _get(String uri) async {
     final response = await http.get(

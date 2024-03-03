@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jeevan_diabetes_app/core/Bloc/api_bloc/api_bloc.dart';
+import 'package:jeevan_diabetes_app/core/models/models.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class ContactScreen extends StatelessWidget {
@@ -7,6 +11,8 @@ class ContactScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ContactUs contactUs = const ContactUs();
+    context.read<ApiBloc>().add(ContactUsFetchEvent());
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(
@@ -23,50 +29,72 @@ class ContactScreen extends StatelessWidget {
                   "Contact",
                   style: GoogleFonts.beVietnamPro(
                     color: Colors.black,
-                    fontSize: 20,
+                    fontSize: 16,
                     fontWeight: FontWeight.w500,
                     height: 0,
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 10,
-            ),
             Expanded(
-              child: ListView(
-                children: [
-                  Text(
-                    "You can get in touch with us through below platforms. Our Team will reach out to you as soon as it would be posible.",
-                    textAlign: TextAlign.justify,
-                    style: GoogleFonts.beVietnamPro(
-                      color: const Color(0xFFA4A4A4),
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const SupportCard(),
-                  const SizedBox(height: 12),
-                  const SocialMediaCard(),
-                  const SizedBox(height: 12),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: Text(
-                      'Vimala Hospital Complex, M.C. Road, Ettumanoor Kottayam 686631, Kerala - India',
-                      maxLines: 3,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.beVietnamPro(
-                        color: const Color(0xFF242A2F),
-                        fontSize: 14,
-                        fontWeight: FontWeight.w300,
-                        height: 1.11,
-                      ),
-                    ),
-                  )
-                ],
+              child: BlocBuilder<ApiBloc, ApiState>(
+                builder: (context, state) {
+                  if (state is ApiLoadingState) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (state is ContactUsSuccessState) {
+                    contactUs = state.contactUs;
+                    return Column(
+                      children: [
+                        Html(
+                          data: contactUs.description ?? '',
+                          style: {
+                            'p': Style(
+                              fontSize: FontSize(10),
+                              color: const Color(0xFFA4A4A4),
+                              fontWeight: FontWeight.w500,
+                            ),
+                          },
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        SupportCard(
+                          phone: contactUs.phone ?? "",
+                          mobile: contactUs.mobile ?? "",
+                          googleMap: contactUs.googleMap ?? "",
+                        ),
+                        const SizedBox(height: 12),
+                        SocialMediaCard(
+                          instagramLink: contactUs.instagramLink ?? "",
+                          facebookLink: contactUs.facebookLink ?? "",
+                          youTubeLink: contactUs.youtubeLink ?? "",
+                        ),
+                        const SizedBox(height: 12),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Text(
+                            contactUs.address ?? "",
+                            maxLines: 3,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.beVietnamPro(
+                              color: const Color(0xFF242A2F),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                              height: 1.11,
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  } else {
+                    // Handle error state
+                    return const Center(
+                      child: Text('Failed to fetch Category List'),
+                    );
+                  }
+                },
               ),
             ),
           ],

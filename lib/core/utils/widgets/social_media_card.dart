@@ -4,8 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
 
 class SocialMediaCard extends StatelessWidget {
-  const SocialMediaCard({super.key});
-
+  const SocialMediaCard(
+      {super.key,
+      required this.instagramLink,
+      required this.facebookLink,
+      required this.youTubeLink});
+  final String instagramLink;
+  final String facebookLink;
+  final String youTubeLink;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,19 +47,19 @@ class SocialMediaCard extends StatelessWidget {
             ),
             socialMediaCard(
               socialMediaName: "Instagram",
-              username: "@jeevansdiabetes",
+              username: instagramLink,
               logo: instaIconWhite,
             ),
             socialMediaCard(
               socialMediaName: "Facebook",
-              username: "@jeevansdiabetes",
+              username: facebookLink,
               logo: facebookIcon,
             ),
             FittedBox(
               fit: BoxFit.scaleDown,
               child: socialMediaCard(
                 socialMediaName: "Youtube",
-                username: "@jeevansdiabetes",
+                username: youTubeLink,
                 logo: youtubeIconWhite2,
               ),
             )

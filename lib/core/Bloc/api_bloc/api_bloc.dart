@@ -1,13 +1,8 @@
 import 'dart:async';
 import 'package:equatable/equatable.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jeevan_diabetes_app/core/models/category_model/category.dart';
 import 'package:jeevan_diabetes_app/core/models/models.dart';
-import 'package:jeevan_diabetes_app/core/models/video_model/video.dart';
-
 import 'package:jeevan_diabetes_app/network/api_service.dart';
-
 part 'api_event.dart';
 part 'api_state.dart';
 
@@ -19,6 +14,7 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
     on<PopularVideosFetchEvent>(apiPopularVideosFetchEvent);
     on<CategoryListFetchEvent>(apiCategoryListFetchEvent);
     on<AboutUsFetchEvent>(aboutUsFetchEvent);
+    on<ContactUsFetchEvent>(contactUsFetchEvent);
   }
 
   FutureOr<void> apiPopularVideosFetchEvent(
@@ -56,11 +52,25 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
       AboutUsFetchEvent event, Emitter<ApiState> emit) async {
     emit(ApiLoadingState());
     try {
-      // Fetch Category List from the API
+      // Fetch AboutUs List from the API
       final List<AboutUs> aboutUs = await apiService.fetchAboutUs();
       // Emit success state with the fetched videos
       print("aboutUs: $aboutUs");
       emit(AboutUsSuccessState(aboutUs: aboutUs));
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  FutureOr<void> contactUsFetchEvent(
+      ContactUsFetchEvent event, Emitter<ApiState> emit) async {
+    emit(ApiLoadingState());
+    try {
+      // Fetch ContactUs List from the API
+      final ContactUs contactUs = await apiService.fetchContactUs();
+      // Emit success state with the fetched videos
+      print("contactUs: $contactUs");
+      emit(ContactUsSuccessState(contactUs: contactUs));
     } catch (e) {
       print(e);
     }

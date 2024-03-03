@@ -6,7 +6,7 @@ part of 'contactus.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Contactus _$ContactusFromJson(Map<String, dynamic> json) => Contactus(
+ContactUs _$ContactUsFromJson(Map<String, dynamic> json) => ContactUs(
       id: json['id'] as String?,
       pageHeading: json['page_heading'] as String?,
       bannerImage: json['banner_image'] as String?,
@@ -21,7 +21,7 @@ Contactus _$ContactusFromJson(Map<String, dynamic> json) => Contactus(
       youtubeLink: json['youtube_link'] as String?,
     );
 
-Map<String, dynamic> _$ContactusToJson(Contactus instance) => <String, dynamic>{
+Map<String, dynamic> _$ContactUsToJson(ContactUs instance) => <String, dynamic>{
       'id': instance.id,
       'page_heading': instance.pageHeading,
       'banner_image': instance.bannerImage,

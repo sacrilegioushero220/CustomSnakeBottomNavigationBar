@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'contactus.g.dart';
 
 @JsonSerializable()
-class Contactus extends Equatable {
+class ContactUs extends Equatable {
   final String? id;
   @JsonKey(name: 'page_heading')
   final String? pageHeading;
@@ -24,7 +24,7 @@ class Contactus extends Equatable {
   @JsonKey(name: 'youtube_link')
   final String? youtubeLink;
 
-  const Contactus({
+  const ContactUs({
     this.id,
     this.pageHeading,
     this.bannerImage,
@@ -39,11 +39,11 @@ class Contactus extends Equatable {
     this.youtubeLink,
   });
 
-  factory Contactus.fromJson(Map<String, dynamic> json) {
-    return _$ContactusFromJson(json);
+  factory ContactUs.fromJson(Map<String, dynamic> json) {
+    return _$ContactUsFromJson(json);
   }
 
-  Map<String, dynamic> toJson() => _$ContactusToJson(this);
+  Map<String, dynamic> toJson() => _$ContactUsToJson(this);
 
   @override
   List<Object?> get props {
