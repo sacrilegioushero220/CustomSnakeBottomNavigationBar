@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<ApiBloc>().add(ApiPopularVideosFetchEvent());
+    context.read<ApiBloc>().add(PopularVideosFetchEvent());
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(

@@ -21,10 +21,18 @@ final class ApiSuccessState extends ApiState {
 
 final class ApiErrorState extends ApiState {}
 
-final class ApiCategorySuccessState extends ApiState {
+final class CategorySuccessState extends ApiState {
   @override
   List<Object> get props => [category];
   final List<Category> category;
 
-  const ApiCategorySuccessState({required this.category});
+  const CategorySuccessState({required this.category});
+}
+
+final class AboutUsSuccessState extends ApiState {
+  @override
+  List<Object> get props => [aboutUs];
+  final List<AboutUs> aboutUs;
+
+  const AboutUsSuccessState({required this.aboutUs});
 }

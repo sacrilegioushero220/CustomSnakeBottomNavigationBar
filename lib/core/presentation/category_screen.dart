@@ -11,7 +11,7 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<ApiBloc>().add(ApiCategoryListFetchEvent());
+    context.read<ApiBloc>().add(CategoryListFetchEvent());
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(
@@ -45,7 +45,7 @@ class CategoryScreen extends StatelessWidget {
                     return const Center(
                       child: CircularProgressIndicator(),
                     );
-                  } else if (state is ApiCategorySuccessState) {
+                  } else if (state is CategorySuccessState) {
                     final categoryList = state.category;
                     return ListView.builder(
                       itemCount: categoryList.length,

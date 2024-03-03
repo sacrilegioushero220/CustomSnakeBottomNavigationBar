@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jeevan_diabetes_app/core/Bloc/api_bloc/api_bloc.dart';
+import 'package:jeevan_diabetes_app/core/models/models.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class AboutScreen extends StatelessWidget {
@@ -7,6 +10,7 @@ class AboutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<ApiBloc>().add(AboutUsFetchEvent());
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(
@@ -34,24 +38,33 @@ class AboutScreen extends StatelessWidget {
               height: 10,
             ),
             Expanded(
-              child: ListView(
-                children: [
-                  AboutTile(
-                    title:
-                        "Jeevans Diabetes and Endocrinology Speciality Clinic",
-                    subtitle: "By Dr. Jeevan Joseph",
-                    content:
-                        "Jeevans Diabetes and Endocrine centre is a center of excellence in diabetes and hormonal care, started by Dr. Jeevan Joseph who is an Endocrinologist trained in the United Kingdom and has returned to Kottayam with a vision to bring international expertise and experience home.",
-                    image: hospitalPic,
-                  ),
-                  AboutTile(
-                      title:
-                          "Inaguration of Jeevans Diabetes and Endocrine Centre",
-                      subtitle: "",
-                      image: inaugurationPic,
-                      content:
-                          "by Shri Suresh Kurup, Hon Ettumanoor MLA and Ms.Sikha Surendran IAS, Assistant Collector, Kottayam")
-                ],
+              child: BlocBuilder<ApiBloc, ApiState>(
+                builder: (context, state) {
+                  if (state is ApiLoadingState) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (state is AboutUsSuccessState) {
+                    final aboutUsList = state.aboutUs;
+                    return ListView.builder(
+                      itemCount: aboutUsList.length,
+                      itemBuilder: (context, index) {
+                        final AboutUs aboutUs = aboutUsList[index];
+                        return AboutTile(
+                          title: aboutUs.title ?? "",
+                          subtitle: "",
+                          image: aboutUs.bannerImage ?? "",
+                          content: aboutUs.description ?? "",
+                        );
+                      },
+                    );
+                  } else {
+                    // Handle error state
+                    return const Center(
+                      child: Text('Failed to fetch About Us'),
+                    );
+                  }
+                },
               ),
             ),
           ],

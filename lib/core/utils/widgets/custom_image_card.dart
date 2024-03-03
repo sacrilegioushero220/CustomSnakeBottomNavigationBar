@@ -16,7 +16,7 @@ class CustomImageCard extends StatelessWidget {
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       ),
-      child: Image.asset(
+      child: Image.network(
         image,
         fit: BoxFit.fill,
       ),

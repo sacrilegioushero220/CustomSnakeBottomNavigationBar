@@ -27,6 +27,16 @@ class ApiService {
     return data.map((json) => Category.fromJson(json)).toList();
   }
 
+  Future<List<AboutUs>> fetchAboutUs() async {
+    final response = await _get(aboutUsUri);
+    // Parse the JSON response into a list of AboutUs
+
+    final Map<String, dynamic> responseData =
+        json.decode(response.body)['data']['ABOUTUS'];
+    final aboutUs = AboutUs.fromJson(responseData);
+    return [aboutUs];
+  }
+
   // Generic method to perform HTTP GET requests
   Future<http.Response> _get(String uri) async {
     final response = await http.get(
