@@ -14,6 +14,7 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("category Image: $categoryImage");
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: Stack(
@@ -26,17 +27,19 @@ class CategoryTile extends StatelessWidget {
                 begin: const Alignment(-0.03, 1.00),
                 end: const Alignment(0.03, -1),
                 colors: [
-                  Colors.black.withOpacity(0.5),
-                  Colors.black.withOpacity(0)
+                  Colors.black.withOpacity(0.8),
+                  Colors.black.withOpacity(0.2)
                 ],
               ),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
             ),
-            child: Image.asset(
-              categoryImage,
-              fit: BoxFit.fill,
+            child: ClipRect(
+              child: Image.network(
+                categoryImage,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
           Positioned(

@@ -9,8 +9,8 @@ class Category extends Equatable {
   final String? id;
   @JsonKey(name: 'category')
   final String? category;
-  @JsonKey(name: 'bannerImage')
-  final String? bannerImage;
+  @JsonKey(name: 'banner_image')
+  final String? banner_image;
   @JsonKey(name: 'priority')
   final String? priority;
   @JsonKey(name: 'status')
@@ -23,7 +23,7 @@ class Category extends Equatable {
   const Category({
     this.id,
     this.category,
-    this.bannerImage,
+    this.banner_image,
     this.priority,
     this.status,
   });
@@ -34,7 +34,7 @@ class Category extends Equatable {
   List<Object?> get props => [
         id,
         category,
-        bannerImage,
+        banner_image,
         priority,
         status,
       ];

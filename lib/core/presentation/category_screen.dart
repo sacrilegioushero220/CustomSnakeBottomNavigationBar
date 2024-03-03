@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jeevan_diabetes_app/core/Bloc/api_bloc/api_bloc.dart';
+import 'package:jeevan_diabetes_app/core/models/category_model/category.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 import 'package:jeevan_diabetes_app/core/utils/widgets/category_tile.dart';
 
@@ -8,6 +11,7 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<ApiBloc>().add(ApiCategoryListFetchEvent());
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(
@@ -20,22 +24,6 @@ class CategoryScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                // TextButton(
-                //   style: ButtonStyle(
-                //     foregroundColor:
-                //         MaterialStateProperty.all<Color?>(Colors.blue),
-                //     overlayColor: MaterialStateProperty.all<Color>(Colors.grey),
-                //   ),
-                //   child: Text(
-                //     "Back",
-                //     style: GoogleFonts.beVietnamPro(
-                //       fontSize: 14,
-                //       fontWeight: FontWeight.w500,
-                //       height: 0,
-                //     ),
-                //   ),
-                //   onPressed: () {},
-                // ),
                 Text(
                   "Category",
                   style: GoogleFonts.beVietnamPro(
@@ -51,29 +39,31 @@ class CategoryScreen extends StatelessWidget {
               height: 10,
             ),
             Expanded(
-              child: ListView(
-                children: [
-                  CategoryTile(
-                    category: "Endocrinology",
-                    categoryImage: dem1,
-                  ),
-                  CategoryTile(
-                    category: "Thyroid Care",
-                    categoryImage: dem2,
-                  ),
-                  CategoryTile(
-                    category: "Diabetes Care",
-                    categoryImage: dem3,
-                  ),
-                  CategoryTile(
-                    category: "PCOD",
-                    categoryImage: dem4,
-                  ),
-                  CategoryTile(
-                    category: "Gynecology",
-                    categoryImage: dem5,
-                  ),
-                ],
+              child: BlocBuilder<ApiBloc, ApiState>(
+                builder: (context, state) {
+                  if (state is ApiLoadingState) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (state is ApiCategorySuccessState) {
+                    final categoryList = state.category;
+                    return ListView.builder(
+                      itemCount: categoryList.length,
+                      itemBuilder: (context, index) {
+                        final Category category = categoryList[index];
+                        return CategoryTile(
+                          category: category.category ?? "",
+                          categoryImage: category.banner_image ?? "",
+                        );
+                      },
+                    );
+                  } else {
+                    // Handle error state
+                    return const Center(
+                      child: Text('Failed to fetch Category List'),
+                    );
+                  }
+                },
               ),
             ),
           ],
