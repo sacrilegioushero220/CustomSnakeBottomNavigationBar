@@ -16,6 +16,7 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
     on<AboutUsFetchEvent>(aboutUsFetchEvent);
     on<ContactUsFetchEvent>(contactUsFetchEvent);
     on<SearchVideosEvent>(searchVideosEvent);
+    on<CategoryVideosFetchEvent>(categoryVideosFetchEvent);
   }
 
   FutureOr<void> apiPopularVideosFetchEvent(
@@ -90,6 +91,23 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
       // Emit error state if an exception occurs
       emit(ApiErrorState());
       print("Error occurred during search: $e");
+    }
+  }
+
+  FutureOr<void> categoryVideosFetchEvent(
+      CategoryVideosFetchEvent event, Emitter<ApiState> emit) async {
+    emit(ApiLoadingState());
+    try {
+      // Fetch category videos from the API using categoryId
+      final List<Video> categoryVideos =
+          await apiService.fetchCategoryVideos(event.categoryId);
+      print("CategoryVideos: $categoryVideos");
+      // Emit success state with the fetched category videos
+      emit(CategoryVideosSuccessState(categoryVideos: categoryVideos));
+    } catch (e) {
+      // Emit error state if an exception occurs
+      emit(ApiErrorState());
+      print("Error occurred during category videos fetch: $e");
     }
   }
 }

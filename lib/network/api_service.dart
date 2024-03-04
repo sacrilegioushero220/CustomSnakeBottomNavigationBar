@@ -71,6 +71,16 @@ class ApiService {
     }
   }
 
+  Future<List<Video>> fetchCategoryVideos(String categoryId) async {
+    const String categoryVideosUri = '$baseUri/videos/category-list-videos';
+    final Map<String, String> body = {'categoryId': categoryId};
+    final response = await _post(categoryVideosUri, body);
+
+    // Parse the JSON response into a list of videos
+    final List<dynamic> data = json.decode(response.body)['data']['Video'];
+    return data.map((json) => Video.fromJson(json)).toList();
+  }
+
   // Generic method to perform HTTP POST requests
   Future<http.Response> _post(String uri, Map<String, String> body) async {
     final response = await http.post(

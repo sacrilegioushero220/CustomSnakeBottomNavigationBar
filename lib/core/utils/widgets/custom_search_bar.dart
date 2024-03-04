@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/Bloc/api_bloc/api_bloc.dart';
 import 'package:jeevan_diabetes_app/core/presentation/search_results_screen.dart';
 import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
+import 'package:jeevan_diabetes_app/network/api_service.dart';
 
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({super.key});
@@ -43,8 +44,11 @@ class CustomSearchBar extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              SearchResultsPage(searchQuery: query)));
+                          builder: (context) => ResultsPage(
+                                isSearchNeeded: true,
+                                title: "Search Results",
+                                future: ApiService().searchVideos(query),
+                              )));
                 },
                 decoration: InputDecoration(
                   hintText: 'Search a video here...',

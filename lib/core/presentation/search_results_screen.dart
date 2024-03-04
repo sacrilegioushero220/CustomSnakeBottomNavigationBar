@@ -3,12 +3,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/models/models.dart';
 import 'package:jeevan_diabetes_app/core/presentation/video_detail_screen.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
-import 'package:jeevan_diabetes_app/network/api_service.dart';
 
-class SearchResultsPage extends StatelessWidget {
-  final String searchQuery;
+class ResultsPage extends StatelessWidget {
+  final String title;
+  final Future<List<Video>>? future;
+  final bool isSearchNeeded;
 
-  const SearchResultsPage({super.key, required this.searchQuery});
+  const ResultsPage(
+      {super.key,
+      required this.title,
+      required this.future,
+      required this.isSearchNeeded});
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +26,11 @@ class SearchResultsPage extends StatelessWidget {
         ),
         child: Column(
           children: [
+            isSearchNeeded
+                ? const CustomSearchBar()
+                : const SizedBox(
+                    height: 5,
+                  ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -43,7 +53,7 @@ class SearchResultsPage extends StatelessWidget {
                   },
                 ),
                 Text(
-                  "Search Results",
+                  title,
                   style: GoogleFonts.beVietnamPro(
                     color: Colors.black,
                     fontSize: 20,
@@ -58,7 +68,7 @@ class SearchResultsPage extends StatelessWidget {
             ),
             Expanded(
               child: FutureBuilder<List<Video>>(
-                future: ApiService().searchVideos(searchQuery),
+                future: future,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
@@ -74,7 +84,7 @@ class SearchResultsPage extends StatelessWidget {
                         print("list of video123{$video}");
                         return HomeTile(
                           tilePic: video.videoImage ?? "",
-                          categoryTitle: video.category ?? "",
+                          categoryTitle: video.categoryName ?? "",
                           title: video.videoTitle ?? '',
                           subtitle: video.postedBy ?? '',
                           onTap: () {
@@ -82,8 +92,9 @@ class SearchResultsPage extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (ctx) => VideoDetailScreen(
+                                  isSearchNeeded: false,
                                   video: video,
-                                  title: 'Results',
+                                  title: title,
                                 ),
                               ),
                             );

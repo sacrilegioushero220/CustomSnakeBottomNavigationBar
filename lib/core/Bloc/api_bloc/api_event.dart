@@ -25,3 +25,12 @@ class SearchVideosEvent extends ApiEvent {
   @override
   List<Object> get props => [keyword];
 }
+
+class CategoryVideosFetchEvent extends ApiEvent {
+  final String categoryId;
+
+  const CategoryVideosFetchEvent(this.categoryId);
+
+  @override
+  List<Object> get props => [categoryId];
+}

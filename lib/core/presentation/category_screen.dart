@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/Bloc/api_bloc/api_bloc.dart';
 import 'package:jeevan_diabetes_app/core/models/category_model/category.dart';
+import 'package:jeevan_diabetes_app/core/presentation/search_results_screen.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 import 'package:jeevan_diabetes_app/core/utils/widgets/category_tile.dart';
+import 'package:jeevan_diabetes_app/network/api_service.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -54,6 +56,24 @@ class CategoryScreen extends StatelessWidget {
                         return CategoryTile(
                           category: category.category ?? "",
                           categoryImage: category.banner_image ?? "",
+                          onTap: () {
+                            context.read<ApiBloc>().add(
+                                CategoryVideosFetchEvent(category.id ?? ""));
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BlocProvider.value(
+                                  value: context.read<ApiBloc>(),
+                                  child: ResultsPage(
+                                    isSearchNeeded: false,
+                                    title: category.category ?? "",
+                                    future: ApiService()
+                                        .fetchCategoryVideos(category.id ?? ""),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
                         );
                       },
                     );

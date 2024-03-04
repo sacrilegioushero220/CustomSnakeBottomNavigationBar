@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
@@ -7,10 +6,12 @@ import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
 class CategoryTile extends StatelessWidget {
   final String category;
   final String categoryImage;
+  final void Function()? onTap;
   const CategoryTile({
     super.key,
     required this.category,
     required this.categoryImage,
+    this.onTap,
   });
 
   @override
@@ -20,14 +21,17 @@ class CategoryTile extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 20),
       child: Stack(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(21),
-            child: SizedBox(
-              width: 390,
-              height: 170,
-              child: Image.network(
-                categoryImage,
-                fit: BoxFit.cover,
+          InkWell(
+            onTap: onTap,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(21),
+              child: SizedBox(
+                width: 390,
+                height: 170,
+                child: Image.network(
+                  categoryImage,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),

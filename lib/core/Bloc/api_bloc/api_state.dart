@@ -53,3 +53,12 @@ class SearchVideosSuccessState extends ApiState {
   @override
   List<Object> get props => [searchResults];
 }
+
+class CategoryVideosSuccessState extends ApiState {
+  final List<Video> categoryVideos;
+
+  const CategoryVideosSuccessState({required this.categoryVideos});
+
+  @override
+  List<Object> get props => [categoryVideos];
+}

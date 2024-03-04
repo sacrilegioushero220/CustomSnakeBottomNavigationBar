@@ -4,11 +4,15 @@ import 'package:jeevan_diabetes_app/core/models/video_model/video.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class VideoDetailScreen extends StatelessWidget {
+  const VideoDetailScreen(
+      {super.key,
+      required this.video,
+      required this.title,
+      required this.isSearchNeeded});
+
   final Video video;
   final String title;
-  const VideoDetailScreen(
-      {super.key, required this.video, required this.title});
-
+  final bool isSearchNeeded;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +24,11 @@ class VideoDetailScreen extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const CustomSearchBar(),
+            isSearchNeeded
+                ? const CustomSearchBar()
+                : const SizedBox(
+                    height: 5,
+                  ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

@@ -68,6 +68,7 @@ class HomeScreen extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (ctx) => VideoDetailScreen(
+                                  isSearchNeeded: false,
                                   video: video,
                                   title: 'Popular Videos',
                                 ),
