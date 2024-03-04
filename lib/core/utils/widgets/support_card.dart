@@ -124,8 +124,7 @@ class SupportCard extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 print(googleMap);
-                launchUrl(
-                    Uri.parse("https://maps.app.goo.gl/uLNWaT86yT4NtVZ37"));
+                launchUrl(Uri.parse(googleMap));
               },
               child: Container(
                 width: MediaQuery.of(context).size.width *

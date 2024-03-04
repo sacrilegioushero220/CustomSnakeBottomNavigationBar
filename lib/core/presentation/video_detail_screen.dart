@@ -43,7 +43,7 @@ class VideoDetailScreen extends StatelessWidget {
                   },
                 ),
                 Text(
-                  title,
+                  "",
                   style: GoogleFonts.beVietnamPro(
                     color: Colors.black,
                     fontSize: 20,
