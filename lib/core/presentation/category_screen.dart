@@ -8,12 +8,24 @@ import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 import 'package:jeevan_diabetes_app/core/utils/widgets/category_tile.dart';
 import 'package:jeevan_diabetes_app/network/api_service.dart';
 
-class CategoryScreen extends StatelessWidget {
+class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});
+
+
+  @override
+  CategoryScreenState createState()=> CategoryScreenState();
+}
+class CategoryScreenState extends State<CategoryScreen> {
+
+  @override
+  void initState(){
+    super.initState();
+    context.read<ApiBloc>().add(CategoryListFetchEvent());
+  }
 
   @override
   Widget build(BuildContext context) {
-    context.read<ApiBloc>().add(CategoryListFetchEvent());
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(
@@ -57,8 +69,8 @@ class CategoryScreen extends StatelessWidget {
                           category: category.category ?? "",
                           categoryImage: category.banner_image ?? "",
                           onTap: () {
-                            context.read<ApiBloc>().add(
-                                CategoryVideosFetchEvent(category.id ?? ""));
+                            // context.read<ApiBloc>().add(
+                            //     CategoryVideosFetchEvent(category.id ?? ""));
                             Navigator.push(
                               context,
                               MaterialPageRoute(
