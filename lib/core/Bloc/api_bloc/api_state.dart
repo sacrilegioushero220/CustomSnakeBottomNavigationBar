@@ -44,3 +44,12 @@ final class ContactUsSuccessState extends ApiState {
 
   const ContactUsSuccessState({required this.contactUs});
 }
+
+class SearchVideosSuccessState extends ApiState {
+  final List<Video> searchResults;
+
+  const SearchVideosSuccessState({required this.searchResults});
+
+  @override
+  List<Object> get props => [searchResults];
+}

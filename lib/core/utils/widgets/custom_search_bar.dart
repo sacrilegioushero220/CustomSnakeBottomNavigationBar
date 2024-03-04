@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jeevan_diabetes_app/core/Bloc/api_bloc/api_bloc.dart';
+import 'package:jeevan_diabetes_app/core/presentation/search_results_screen.dart';
 import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
 
 class CustomSearchBar extends StatelessWidget {
@@ -8,6 +11,7 @@ class CustomSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController textEditingController = TextEditingController();
     return Padding(
       padding: const EdgeInsets.only(top: 15, bottom: 15),
       child: Container(
@@ -32,6 +36,16 @@ class CustomSearchBar extends StatelessWidget {
             ),
             Expanded(
               child: TextField(
+                controller: textEditingController,
+                onSubmitted: (query) {
+                  // Dispatch a search event to the API Bloc
+                  context.read<ApiBloc>().add(SearchVideosEvent(query));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              SearchResultsPage(searchQuery: query)));
+                },
                 decoration: InputDecoration(
                   hintText: 'Search a video here...',
                   hintStyle: GoogleFonts.beVietnamPro(

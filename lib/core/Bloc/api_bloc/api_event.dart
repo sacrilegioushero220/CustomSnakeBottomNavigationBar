@@ -16,3 +16,12 @@ class CategoryListFetchEvent extends ApiEvent {}
 class AboutUsFetchEvent extends ApiEvent {}
 
 class ContactUsFetchEvent extends ApiEvent {}
+
+class SearchVideosEvent extends ApiEvent {
+  final String keyword;
+
+  const SearchVideosEvent(this.keyword);
+
+  @override
+  List<Object> get props => [keyword];
+}

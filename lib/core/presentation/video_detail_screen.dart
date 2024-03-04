@@ -5,7 +5,9 @@ import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
 class VideoDetailScreen extends StatelessWidget {
   final Video video;
-  const VideoDetailScreen({super.key, required this.video});
+  final String title;
+  const VideoDetailScreen(
+      {super.key, required this.video, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class VideoDetailScreen extends StatelessWidget {
                   },
                 ),
                 Text(
-                  "Popular Videos",
+                  title,
                   style: GoogleFonts.beVietnamPro(
                     color: Colors.black,
                     fontSize: 20,

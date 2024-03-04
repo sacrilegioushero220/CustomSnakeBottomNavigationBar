@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jeevan_diabetes_app/core/Bloc/api_bloc/api_bloc.dart';
+import 'package:jeevan_diabetes_app/core/models/models.dart';
 import 'package:jeevan_diabetes_app/core/presentation/video_detail_screen.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
+import 'package:jeevan_diabetes_app/network/api_service.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class SearchResultsPage extends StatelessWidget {
+  final String searchQuery;
+
+  const SearchResultsPage({super.key, required this.searchQuery});
 
   @override
   Widget build(BuildContext context) {
-    context.read<ApiBloc>().add(PopularVideosFetchEvent());
     return Scaffold(
+      appBar: customAppBar(),
       body: Padding(
         padding: const EdgeInsets.only(
           left: 18,
@@ -19,21 +21,29 @@ class HomeScreen extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const CustomSearchBar(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Home",
-                  style: GoogleFonts.beVietnamPro(
-                    color: const Color(0xFFA6A6A6),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    height: 0,
+                TextButton(
+                  style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color?>(Colors.blue),
+                    overlayColor: MaterialStateProperty.all<Color>(Colors.grey),
                   ),
+                  child: Text(
+                    "Back",
+                    style: GoogleFonts.beVietnamPro(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      height: 0,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
                 Text(
-                  "Popular Videos",
+                  "Search Results",
                   style: GoogleFonts.beVietnamPro(
                     color: Colors.black,
                     fontSize: 20,
@@ -47,20 +57,24 @@ class HomeScreen extends StatelessWidget {
               height: 10,
             ),
             Expanded(
-              child: BlocBuilder<ApiBloc, ApiState>(
-                builder: (context, state) {
-                  if (state is ApiLoadingState) {
+              child: FutureBuilder<List<Video>>(
+                future: ApiService().searchVideos(searchQuery),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
-                  } else if (state is ApiSuccessState) {
-                    // Assuming you have a list of Video objects in state
-                    final videos = state.video;
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  } else if (snapshot.hasData) {
+                    final videos = snapshot.data!;
+
                     return ListView.builder(
                       itemCount: videos.length,
                       itemBuilder: (context, index) {
                         final video = videos[index];
+                        print("list of video123{$video}");
                         return HomeTile(
                           tilePic: video.videoImage ?? "",
-                          categoryTitle: video.categoryName ?? '',
+                          categoryTitle: video.category ?? "",
                           title: video.videoTitle ?? '',
                           subtitle: video.postedBy ?? '',
                           onTap: () {
@@ -69,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (ctx) => VideoDetailScreen(
                                   video: video,
-                                  title: 'Popular Videos',
+                                  title: 'Results',
                                 ),
                               ),
                             );
@@ -78,10 +92,7 @@ class HomeScreen extends StatelessWidget {
                       },
                     );
                   } else {
-                    // Handle error state
-                    return const Center(
-                      child: Text('Failed to fetch videos'),
-                    );
+                    return const Center(child: Text('No results found.'));
                   }
                 },
               ),

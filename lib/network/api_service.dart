@@ -12,6 +12,7 @@ class ApiService {
   static const String categoryListUri = '$baseUri/category/category-list';
   static const String contactUsUri = '$baseUri/contactus/contact-us';
   static const String aboutUsUri = '$baseUri/contactus/about-us';
+  static const String searchVideosUri = "$baseUri/videos/search";
 
   Future<List<Video>> fetchPopularVideos() async {
     final response = await _get(homeVideosUri);
@@ -47,6 +48,12 @@ class ApiService {
     return contactUs;
   }
 
+  Future<List<Video>> searchVideos(String keyword) async {
+    final response = await _post(searchVideosUri, {'keyword': keyword});
+    final List<dynamic> data = json.decode(response.body)['data']['Video'];
+    return data.map((json) => Video.fromJson(json)).toList();
+  }
+
   // Generic method to perform HTTP GET requests
   Future<http.Response> _get(String uri) async {
     final response = await http.get(
@@ -60,6 +67,24 @@ class ApiService {
       return response;
     } else {
       // If the response is not successful, throw an error
+      throw Exception('Failed to fetch data');
+    }
+  }
+
+  // Generic method to perform HTTP POST requests
+  Future<http.Response> _post(String uri, Map<String, String> body) async {
+    final response = await http.post(
+      Uri.parse(uri),
+      headers: {
+        HttpHeaders.authorizationHeader: authToken,
+        HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
+      },
+      body: body,
+    );
+
+    if (response.statusCode == 200) {
+      return response;
+    } else {
       throw Exception('Failed to fetch data');
     }
   }
