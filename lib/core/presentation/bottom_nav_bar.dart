@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -64,8 +66,7 @@ class _HomeState extends State<Home> {
                 ),
                 TextButton(
                   onPressed: () {
-                    canPop = true;
-                    Navigator.of(context).pop(true);
+                    exit(0);
                   },
                   child: Text(
                     'Exit',
