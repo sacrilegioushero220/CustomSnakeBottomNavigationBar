@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
@@ -120,35 +121,52 @@ class SupportCard extends StatelessWidget {
           Positioned(
             right: 15,
             top: 22,
-            child: Container(
-              width: MediaQuery.of(context).size.width *
-                  0.3, // Adjust the width as needed
-              height: MediaQuery.of(context).size.width *
-                  0.3 *
-                  (138 / 130), // Calculate height to maintain aspect ratio
-              decoration: ShapeDecoration(
-                color: Colors.black.withOpacity(0.19),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
-              child: Stack(
-                children: [
-                  Image.asset(
-                    mapPic,
-                    fit: BoxFit.cover, // Adjust the fit as needed
+            child: InkWell(
+              onTap: () {
+                print(googleMap);
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      content: SingleChildScrollView(
+                        child: Html(
+                          data: googleMap,
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width *
+                    0.3, // Adjust the width as needed
+                height: MediaQuery.of(context).size.width *
+                    0.3 *
+                    (138 / 130), // Calculate height to maintain aspect ratio
+                decoration: ShapeDecoration(
+                  color: Colors.black.withOpacity(0.19),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
                   ),
-                  Center(
-                    child: Text(
-                      'LOCATE US',
-                      style: GoogleFonts.beVietnamPro(
-                        color: Colors.white,
-                        fontSize: 9,
-                        fontWeight: FontWeight.w600,
+                ),
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      mapPic,
+                      fit: BoxFit.cover, // Adjust the fit as needed
+                    ),
+                    Center(
+                      child: Text(
+                        'LOCATE US',
+                        style: GoogleFonts.beVietnamPro(
+                          color: Colors.white,
+                          fontSize: 9,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
