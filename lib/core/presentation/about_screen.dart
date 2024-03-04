@@ -19,19 +19,10 @@ class AboutScreen extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const CustomSearchBar(),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  "About",
-                  style: GoogleFonts.beVietnamPro(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    height: 0,
-                  ),
-                ),
+                Text(""),
               ],
             ),
             const SizedBox(

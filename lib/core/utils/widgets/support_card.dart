@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SupportCard extends StatelessWidget {
   final String phone;
@@ -124,18 +124,8 @@ class SupportCard extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 print(googleMap);
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      content: SingleChildScrollView(
-                        child: Html(
-                          data: googleMap,
-                        ),
-                      ),
-                    );
-                  },
-                );
+                launchUrl(
+                    Uri.parse("https://maps.app.goo.gl/uLNWaT86yT4NtVZ37"));
               },
               child: Container(
                 width: MediaQuery.of(context).size.width *

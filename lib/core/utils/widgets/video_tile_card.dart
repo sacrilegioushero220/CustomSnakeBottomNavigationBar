@@ -21,27 +21,14 @@ class VideoTileCard extends StatelessWidget {
       children: [
         Align(
           alignment: Alignment.center,
-          child: AspectRatio(
-            aspectRatio: 10 / 10,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(21),
+            child: SizedBox(
+              width: 391,
               height: 337,
-              decoration: ShapeDecoration(
-                gradient: LinearGradient(
-                  begin: const Alignment(0.03, 1.00),
-                  end: const Alignment(-0.03, -1),
-                  colors: [
-                    Colors.black,
-                    Colors.black.withOpacity(0),
-                  ],
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(21),
-                ),
-              ),
               child: Image.network(
                 tilePic,
-                fit: BoxFit.none,
+                fit: BoxFit.cover,
               ),
             ),
           ),

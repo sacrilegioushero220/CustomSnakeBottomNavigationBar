@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
@@ -19,26 +20,14 @@ class CategoryTile extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 20),
       child: Stack(
         children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 170,
-            decoration: ShapeDecoration(
-              gradient: LinearGradient(
-                begin: const Alignment(-0.03, 1.00),
-                end: const Alignment(0.03, -1),
-                colors: [
-                  Colors.black.withOpacity(0.8),
-                  Colors.black.withOpacity(0.2)
-                ],
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(21),
-              ),
-            ),
-            child: ClipRect(
+          ClipRRect(
+            borderRadius: BorderRadius.circular(21),
+            child: SizedBox(
+              width: 390,
+              height: 170,
               child: Image.network(
                 categoryImage,
-                fit: BoxFit.contain,
+                fit: BoxFit.cover,
               ),
             ),
           ),

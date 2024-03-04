@@ -21,17 +21,19 @@ class ContactScreen extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const CustomSearchBar(),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  "Contact",
-                  style: GoogleFonts.beVietnamPro(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    height: 0,
+                Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: Text(
+                    "Contact",
+                    style: GoogleFonts.beVietnamPro(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      height: 0,
+                    ),
                   ),
                 ),
               ],
@@ -58,32 +60,29 @@ class ContactScreen extends StatelessWidget {
                           },
                         ),
                         const SizedBox(
-                          height: 5,
+                          height: 10,
                         ),
                         SupportCard(
                           phone: contactUs.phone ?? "",
                           mobile: contactUs.mobile ?? "",
                           googleMap: contactUs.googleMap ?? "",
                         ),
-                        const SizedBox(height: 12),
+                        const SizedBox(height: 20),
                         SocialMediaCard(
                           instagramLink: contactUs.instagramLink ?? "",
                           facebookLink: contactUs.facebookLink ?? "",
                           youTubeLink: contactUs.youtubeLink ?? "",
                         ),
-                        const SizedBox(height: 12),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: Text(
-                            contactUs.address ?? "",
-                            maxLines: 3,
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.beVietnamPro(
-                              color: const Color(0xFF242A2F),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w300,
-                              height: 1.11,
-                            ),
+                        const SizedBox(height: 20),
+                        Text(
+                          contactUs.address ?? "",
+                          maxLines: 3,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.beVietnamPro(
+                            color: const Color(0xFF242A2F),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                            height: 1.11,
                           ),
                         ),
                       ],
