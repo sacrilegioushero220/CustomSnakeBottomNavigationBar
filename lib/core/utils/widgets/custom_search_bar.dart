@@ -59,6 +59,7 @@ class CustomSearchBar extends StatelessWidget {
                     left: 16,
                   ),
                 ),
+                cursorColor: Colors.black,
               ),
             ),
           ],
