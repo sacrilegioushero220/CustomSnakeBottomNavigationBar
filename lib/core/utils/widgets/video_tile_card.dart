@@ -17,69 +17,72 @@ class VideoTileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Align(
-          alignment: Alignment.center,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(21),
-            child: SizedBox(
-              width: 391,
-              height: 337,
-              child: Image.network(
-                tilePic,
-                fit: BoxFit.cover,
+    return InkWell(
+      onTap: onTap,
+      child: Stack(
+        children: [
+          Align(
+            alignment: Alignment.center,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(21),
+              child: SizedBox(
+                width: 391,
+                height: 337,
+                child: Image.network(
+                  tilePic,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
-        ),
-        Positioned(
-          top: 17,
-          left: 30,
-          child: Container(
-            width: 105,
-            height: 23,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(11.5),
-              color: const Color(0x93ffffff),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(11, 8.0, 0, 8.0),
-              child: Row(
-                children: [
-                  SvgPicture.asset(
-                    blueTick,
-                  ),
-                  const SizedBox(
-                    width: 1,
-                  ),
-                  Text(
-                    categoryTitle,
-                    style: GoogleFonts.beVietnamPro(
-                      color: const Color(0xFF8F89A6),
-                      fontSize: 9,
-                      fontWeight: FontWeight.w400,
-                      height: 0.27,
+          Positioned(
+            top: 17,
+            left: 30,
+            child: Container(
+              width: 105,
+              height: 23,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(11.5),
+                color: const Color(0x93ffffff),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(11, 8.0, 0, 8.0),
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                      blueTick,
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      width: 1,
+                    ),
+                    Text(
+                      categoryTitle,
+                      style: GoogleFonts.beVietnamPro(
+                        color: const Color(0xFF8F89A6),
+                        fontSize: 9,
+                        fontWeight: FontWeight.w400,
+                        height: 0.27,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        Positioned(
-          bottom: 23,
-          left: 30,
-          child: SvgPicture.asset(youTubeIcon),
-        ),
-        Positioned(
-          right: 30,
-          bottom: 19,
-          child: CustomRoundedButton(
-            onTap: onTap,
+          Positioned(
+            bottom: 23,
+            left: 30,
+            child: SvgPicture.asset(youTubeIcon),
           ),
-        )
-      ],
+          Positioned(
+            right: 30,
+            bottom: 19,
+            child: CustomRoundedButton(
+              onTap: onTap,
+            ),
+          )
+        ],
+      ),
     );
   }
 }

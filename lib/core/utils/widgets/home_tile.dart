@@ -30,14 +30,10 @@ class HomeTile extends StatelessWidget {
         children: [
           isVideo
               ? Container(
-                  height: 337,
-                  width: 391,
+                  height: 200,
                   color: Colors.white,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CustomVideoPlayer(
-                      uri: uri ?? "",
-                    ),
+                  child: CustomVideoPlayer(
+                    uri: uri ?? "",
                   ),
                 )
               : VideoTileCard(
