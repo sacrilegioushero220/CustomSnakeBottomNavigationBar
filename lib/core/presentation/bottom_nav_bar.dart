@@ -14,7 +14,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<Widget> screens = [
     const HomeScreen(),
-     CategoryScreen(),
+    const CategoryScreen(),
     const AboutScreen(),
     const ContactScreen(),
   ];
@@ -87,7 +87,7 @@ class _HomeState extends State<Home> {
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
-          snakeShape: SnakeShape.circle,
+          snakeShape: SnakeShape.custom,
         ),
       ),
     );
