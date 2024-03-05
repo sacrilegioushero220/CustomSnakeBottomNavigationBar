@@ -13,7 +13,7 @@ class Video extends Equatable {
   final String? postedBy;
   @JsonKey(name: 'video_description')
   final String? videoDescription;
-  @JsonKey(name: 'video_path')
+  @JsonKey(name: 'videos')
   final String? videos;
   @JsonKey(name: 'video_image')
   final String? videoImage;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:jeevan_diabetes_app/core/utils/utils.dart';
+import 'package:jeevan_diabetes_app/core/utils/widgets/custom_video_player.dart';
+import 'package:jeevan_diabetes_app/core/utils/widgets/video_tile_card.dart';
 
 class HomeTile extends StatelessWidget {
   const HomeTile({
@@ -11,12 +11,16 @@ class HomeTile extends StatelessWidget {
     required this.title,
     required this.subtitle,
     this.onTap,
+    this.uri,
+    required this.isVideo,
   });
   final String tilePic;
   final String categoryTitle;
   final String title;
   final String subtitle;
+  final bool isVideo;
   final void Function()? onTap;
+  final String? uri;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,11 +28,23 @@ class HomeTile extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          VideoTileCard(
-            tilePic: tilePic,
-            categoryTitle: categoryTitle,
-            onTap: onTap,
-          ),
+          isVideo
+              ? Container(
+                  height: 337,
+                  width: 391,
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CustomVideoPlayer(
+                      uri: uri ?? "",
+                    ),
+                  ),
+                )
+              : VideoTileCard(
+                  tilePic: tilePic,
+                  categoryTitle: categoryTitle,
+                  onTap: onTap,
+                ),
           const SizedBox(
             height: 40,
           ),

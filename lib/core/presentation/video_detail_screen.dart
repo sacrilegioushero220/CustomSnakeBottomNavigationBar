@@ -65,10 +65,12 @@ class VideoDetailScreen extends StatelessWidget {
               child: ListView(
                 children: [
                   HomeTile(
+                    isVideo: true,
                     tilePic: video.videoImage ?? "",
                     categoryTitle: video.categoryName ?? '',
                     title: video.videoTitle ?? '',
                     subtitle: video.postedBy ?? '',
+                    uri: video.videos,
                   ),
                   const SizedBox(
                     height: 50,
