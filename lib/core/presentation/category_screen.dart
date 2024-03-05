@@ -11,21 +11,19 @@ import 'package:jeevan_diabetes_app/network/api_service.dart';
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});
 
-
   @override
-  CategoryScreenState createState()=> CategoryScreenState();
+  CategoryScreenState createState() => CategoryScreenState();
 }
-class CategoryScreenState extends State<CategoryScreen> {
 
+class CategoryScreenState extends State<CategoryScreen> {
   @override
-  void initState(){
+  void initState() {
     super.initState();
     context.read<ApiBloc>().add(CategoryListFetchEvent());
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(
@@ -66,7 +64,7 @@ class CategoryScreenState extends State<CategoryScreen> {
                       itemBuilder: (context, index) {
                         final Category category = categoryList[index];
                         return CategoryTile(
-                          category: category.category ?? "",
+                          category: category.category_name ?? "",
                           categoryImage: category.banner_image ?? "",
                           onTap: () {
                             // context.read<ApiBloc>().add(
@@ -78,7 +76,7 @@ class CategoryScreenState extends State<CategoryScreen> {
                                   value: context.read<ApiBloc>(),
                                   child: ResultsPage(
                                     isSearchNeeded: false,
-                                    title: category.category ?? "",
+                                    title: category.category_name ?? "",
                                     future: ApiService()
                                         .fetchCategoryVideos(category.id ?? ""),
                                   ),

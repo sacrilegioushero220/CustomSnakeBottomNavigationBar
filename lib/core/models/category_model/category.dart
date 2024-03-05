@@ -7,8 +7,8 @@ part 'category.g.dart';
 class Category extends Equatable {
   @JsonKey(name: 'id')
   final String? id;
-  @JsonKey(name: 'category')
-  final String? category;
+  @JsonKey(name: 'category_name')
+  final String? category_name;
   @JsonKey(name: 'banner_image')
   final String? banner_image;
   @JsonKey(name: 'priority')
@@ -22,7 +22,7 @@ class Category extends Equatable {
 
   const Category({
     this.id,
-    this.category,
+    this.category_name,
     this.banner_image,
     this.priority,
     this.status,
@@ -33,7 +33,7 @@ class Category extends Equatable {
   @override
   List<Object?> get props => [
         id,
-        category,
+        category_name,
         banner_image,
         priority,
         status,
