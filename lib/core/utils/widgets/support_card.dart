@@ -123,7 +123,6 @@ class SupportCard extends StatelessWidget {
             top: 22,
             child: InkWell(
               onTap: () {
-                print(googleMap);
                 launchUrl(Uri.parse(googleMap));
               },
               child: Container(

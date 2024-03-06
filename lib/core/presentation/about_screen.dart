@@ -4,12 +4,22 @@ import 'package:jeevan_diabetes_app/core/Bloc/api_bloc/api_bloc.dart';
 import 'package:jeevan_diabetes_app/core/models/models.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 
-class AboutScreen extends StatelessWidget {
+class AboutScreen extends StatefulWidget {
   const AboutScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<AboutScreen> createState() => _AboutScreenState();
+}
+
+class _AboutScreenState extends State<AboutScreen> {
+  @override
+  void initState() {
+    super.initState();
     context.read<ApiBloc>().add(AboutUsFetchEvent());
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(
@@ -49,6 +59,7 @@ class AboutScreen extends StatelessWidget {
                       },
                     );
                   } else {
+                    context.read<ApiBloc>().add(AboutUsFetchEvent());
                     // Handle error state
                     return const Center(
                       child: Text('Failed to fetch About Us'),

@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/presentation/screens.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
@@ -22,7 +19,7 @@ class _HomeState extends State<Home> {
     const ContactScreen(),
   ];
   int _selectedIndex = 0;
-
+  bool canPop = false;
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -32,56 +29,16 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: false,
+      canPop: canPop,
       onPopInvoked: (canPop) {
         if (_selectedIndex > 0) {
           setState(() {
             _selectedIndex = 0;
           });
         } else if (_selectedIndex == 0) {
-          showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              backgroundColor: Colors.white,
-              content: Text(
-                'Do you want to exit the app?',
-                style: GoogleFonts.beVietnamPro(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                  height: 0,
-                ),
-              ),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () => Navigator.of(context).pop(false),
-                  child: Text(
-                    'Cancel',
-                    style: GoogleFonts.beVietnamPro(
-                      color: Colors.blue,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      height: 0,
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    exit(0);
-                  },
-                  child: Text(
-                    'Exit',
-                    style: GoogleFonts.beVietnamPro(
-                      color: Colors.blue,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
+          setState(() {
+            canPop = true;
+          });
         }
       },
       child: Scaffold(

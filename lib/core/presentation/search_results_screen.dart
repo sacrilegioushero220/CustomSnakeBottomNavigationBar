@@ -84,7 +84,7 @@ class ResultsPage extends StatelessWidget {
                       itemCount: videos.length,
                       itemBuilder: (context, index) {
                         final video = videos[index];
-                        print("list of video123{$video}");
+
                         return HomeTile(
                           isVideo: false,
                           tilePic: video.videoImage ?? "",

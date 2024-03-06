@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:pod_player/pod_player.dart';
 
 class CustomVideoPlayer extends StatefulWidget {
@@ -15,7 +14,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   @override
   void initState() {
     super.initState();
-    print("url: ${widget.uri}");
+
     if (widget.uri != null) {
       controller = PodPlayerController(
         playVideoFrom: PlayVideoFrom.youtube(widget.uri!),

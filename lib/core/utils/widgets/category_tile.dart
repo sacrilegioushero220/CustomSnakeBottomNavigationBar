@@ -16,7 +16,6 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("category Image: $categoryImage");
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: Stack(

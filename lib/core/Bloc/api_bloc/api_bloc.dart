@@ -29,10 +29,9 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
       // Emit success state with the fetched videos
 
       emit(ApiSuccessState(video: popularVideos));
-    } catch (e, stackTrace) {
+    } catch (e) {
       // Emit error state if an exception occurs
       emit(ApiErrorState());
-      print("error is $e  and the stack trace is:$stackTrace");
     }
   }
 
@@ -46,7 +45,8 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
 
       emit(CategorySuccessState(category: categoryList));
     } catch (e) {
-      print(e);
+      // Emit error state if an exception occurs
+      emit(ApiErrorState());
     }
   }
 
@@ -57,10 +57,10 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
       // Fetch AboutUs List from the API
       final List<AboutUs> aboutUs = await apiService.fetchAboutUs();
       // Emit success state with the fetched videos
-      print("aboutUs: $aboutUs");
+
       emit(AboutUsSuccessState(aboutUs: aboutUs));
     } catch (e) {
-      print(e);
+      emit(ApiErrorState());
     }
   }
 
@@ -71,10 +71,10 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
       // Fetch ContactUs List from the API
       final ContactUs contactUs = await apiService.fetchContactUs();
       // Emit success state with the fetched videos
-      print("contactUs: $contactUs");
+
       emit(ContactUsSuccessState(contactUs: contactUs));
     } catch (e) {
-      print(e);
+      emit(ApiErrorState());
     }
   }
 
@@ -90,7 +90,6 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
     } catch (e) {
       // Emit error state if an exception occurs
       emit(ApiErrorState());
-      print("Error occurred during search: $e");
     }
   }
 
@@ -101,13 +100,12 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
       // Fetch category videos from the API using categoryId
       final List<Video> categoryVideos =
           await apiService.fetchCategoryVideos(event.categoryId);
-      print("CategoryVideos: $categoryVideos");
+
       // Emit success state with the fetched category videos
       emit(CategoryVideosSuccessState(categoryVideos: categoryVideos));
     } catch (e) {
       // Emit error state if an exception occurs
       emit(ApiErrorState());
-      print("Error occurred during category videos fetch: $e");
     }
   }
 }
