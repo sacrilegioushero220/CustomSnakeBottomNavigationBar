@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:jeevan_diabetes_app/core/presentation/screens.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,26 +21,32 @@ class _HomeState extends State<Home> {
   ];
   int _selectedIndex = 0;
   bool canPop = false;
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
+  bool _canPop() {
+    if (_selectedIndex > 0) {
+      return false;
+    } else if (_selectedIndex == 0) {
+      return true;
+    }
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: canPop,
+      canPop: _canPop(),
       onPopInvoked: (canPop) {
         if (_selectedIndex > 0) {
           setState(() {
             _selectedIndex = 0;
           });
-        } else if (_selectedIndex == 0) {
-          setState(() {
-            canPop = true;
-          });
-        }
+        } else if (_selectedIndex == 0) {}
       },
       child: Scaffold(
         resizeToAvoidBottomInset: true,
