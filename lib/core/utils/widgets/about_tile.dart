@@ -49,7 +49,7 @@ class AboutTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: 60,
+                    height: 50,
                     width: MediaQuery.of(context).size.width,
                     child: Text(
                       title,
@@ -86,9 +86,10 @@ class AboutTile extends StatelessWidget {
                     height: 159,
                     child: Text(
                       content,
+                      textAlign: TextAlign.justify,
                       style: const TextStyle(
                         color: Colors.black,
-                        fontSize: 12,
+                        fontSize: 14,
                         fontFamily: 'Be Vietnam Pro',
                         fontWeight: FontWeight.w300,
                         height: 1.5,

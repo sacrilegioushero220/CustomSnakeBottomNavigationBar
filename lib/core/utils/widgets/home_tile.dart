@@ -37,8 +37,8 @@ class HomeTile extends StatelessWidget {
                   ),
                 )
               : VideoTileCard(
-                  tilePic: tilePic ?? "No image found",
-                  categoryTitle: categoryTitle ?? "No category found",
+                  tilePic: tilePic ?? "",
+                  categoryTitle: categoryTitle ?? "",
                   onTap: onTap,
                 ),
           const SizedBox(

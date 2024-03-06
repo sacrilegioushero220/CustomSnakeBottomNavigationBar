@@ -58,7 +58,7 @@ class SupportCard extends StatelessWidget {
                   'Telephone',
                   style: GoogleFonts.beVietnamPro(
                     color: const Color(0xFFA0A0A0),
-                    fontSize: 11,
+                    fontSize: 13,
                     fontWeight: FontWeight.w400,
                     height: 0.14,
                   ),
@@ -66,15 +66,19 @@ class SupportCard extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                Text(
-                  phone,
-                  style: GoogleFonts.beVietnamPro(
-                    color: const Color(0xFF4A4A4A),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    height: 0.09,
-                  ),
-                ),
+                InkWell(
+                    onTap: () {
+                      _launchPhone(phone);
+                    },
+                    child: Text(
+                      phone,
+                      style: GoogleFonts.beVietnamPro(
+                        color: const Color(0xFF4A4A4A),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        height: 0.09,
+                      ),
+                    )),
               ],
             ),
           ),
@@ -161,5 +165,14 @@ class SupportCard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _launchPhone(String phoneNumber) async {
+    final url = 'tel:$phoneNumber';
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

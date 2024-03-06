@@ -49,15 +49,14 @@ class ContactScreen extends StatelessWidget {
                     contactUs = state.contactUs;
                     return Column(
                       children: [
-                        Html(
-                          data: contactUs.description ?? '',
-                          style: {
-                            'p': Style(
-                              fontSize: FontSize(10),
-                              color: const Color(0xFFA4A4A4),
-                              fontWeight: FontWeight.w500,
-                            ),
-                          },
+                        Text(
+                          contactUs.description ?? '',
+                          style: GoogleFonts.beVietnamPro(
+                            color: const Color(0xFFA4A4A4),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                            height: 0,
+                          ),
                         ),
                         const SizedBox(
                           height: 10,

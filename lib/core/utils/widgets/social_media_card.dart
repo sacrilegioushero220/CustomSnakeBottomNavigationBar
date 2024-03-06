@@ -87,7 +87,7 @@ class SocialMediaCard extends StatelessWidget {
               socialMediaName,
               style: GoogleFonts.beVietnamPro(
                 color: const Color(0xFFA0A0A0),
-                fontSize: 11,
+                fontSize: 13,
                 fontWeight: FontWeight.w400,
               ),
             ),
