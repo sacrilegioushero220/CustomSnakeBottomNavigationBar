@@ -14,9 +14,9 @@ class HomeTile extends StatelessWidget {
     this.uri,
     required this.isVideo,
   });
-  final String tilePic;
-  final String categoryTitle;
-  final String title;
+  final String? tilePic;
+  final String? categoryTitle;
+  final String? title;
   final String subtitle;
   final bool isVideo;
   final void Function()? onTap;
@@ -37,8 +37,8 @@ class HomeTile extends StatelessWidget {
                   ),
                 )
               : VideoTileCard(
-                  tilePic: tilePic,
-                  categoryTitle: categoryTitle,
+                  tilePic: tilePic ?? "No image found",
+                  categoryTitle: categoryTitle ?? "No category found",
                   onTap: onTap,
                 ),
           const SizedBox(
@@ -47,7 +47,7 @@ class HomeTile extends StatelessWidget {
           FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
-              title,
+              title ?? "No title found",
               style: GoogleFonts.beVietnamPro(
                 color: Colors.black,
                 fontSize: 18,

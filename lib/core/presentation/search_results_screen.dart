@@ -77,6 +77,9 @@ class ResultsPage extends StatelessWidget {
                   } else if (snapshot.hasData) {
                     final videos = snapshot.data!;
 
+                    if (videos.isEmpty) {
+                      return const Center(child: Text('No results found.'));
+                    }
                     return ListView.builder(
                       itemCount: videos.length,
                       itemBuilder: (context, index) {

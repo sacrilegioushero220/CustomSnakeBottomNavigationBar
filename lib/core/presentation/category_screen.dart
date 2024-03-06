@@ -67,8 +67,6 @@ class CategoryScreenState extends State<CategoryScreen> {
                           category: category.category_name ?? "",
                           categoryImage: category.banner_image ?? "",
                           onTap: () {
-                            // context.read<ApiBloc>().add(
-                            //     CategoryVideosFetchEvent(category.id ?? ""));
                             Navigator.push(
                               context,
                               MaterialPageRoute(
