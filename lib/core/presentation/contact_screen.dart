@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/Bloc/api_bloc/api_bloc.dart';
 import 'package:jeevan_diabetes_app/core/models/models.dart';
