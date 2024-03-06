@@ -97,7 +97,7 @@ class SupportCard extends StatelessWidget {
                 if (await canLaunchUrl(url)) {
                   await launchUrl(url);
                 } else {
-                  print("this link cannot be opened");
+                  throw Exception('url cannnot be launched');
                 }
               },
               child: Column(
