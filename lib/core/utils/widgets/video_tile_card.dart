@@ -45,6 +45,26 @@ class VideoTileCard extends StatelessWidget {
                       );
                     }
                   },
+                  errorBuilder: (context, exception, stackTrace) {
+                    return Container(
+                      width: 100,
+                      height: 100,
+                      color: Colors.grey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.error,
+                              color: Colors.red), // Placeholder icon
+                          const SizedBox(height: 8),
+                          Text(
+                            'Error loading image:\n$exception',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
@@ -71,7 +91,7 @@ class VideoTileCard extends StatelessWidget {
                     Text(
                       categoryTitle,
                       style: GoogleFonts.beVietnamPro(
-                        color: const Color(0xFF8F89A6),
+                        color: Colors.black,
                         fontSize: 9,
                         fontWeight: FontWeight.w400,
                         height: 0.27,

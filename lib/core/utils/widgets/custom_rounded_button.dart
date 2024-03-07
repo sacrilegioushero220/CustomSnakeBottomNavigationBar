@@ -31,13 +31,16 @@ class CustomRoundedButton extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Watch Now",
-                  style: GoogleFonts.beVietnamPro(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    height: 0,
+                FittedBox(
+                  fit:BoxFit.scaleDown,
+                  child: Text(
+                    "Watch Now",
+                    style: GoogleFonts.beVietnamPro(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      height: 0,
+                    ),
                   ),
                 ),
                 const Icon(
