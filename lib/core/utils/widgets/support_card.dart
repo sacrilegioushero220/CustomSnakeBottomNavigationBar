@@ -50,47 +50,56 @@ class SupportCard extends StatelessWidget {
           ),
           Positioned(
             top: 67,
-            left: 64,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Telephone',
-                  style: GoogleFonts.beVietnamPro(
-                    color: const Color(0xFFA0A0A0),
-                    fontSize: 13,
-                    fontWeight: FontWeight.w400,
-                    height: 0.14,
+            left: 20,
+            child: InkWell(
+              onTap: () async {
+                final Uri url = Uri(scheme: 'tel', path: phone);
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
+                } else {
+                  throw Exception('url cannnot be launched');
+                }
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SvgPicture.asset(telephoneIcon),
+                  const SizedBox(
+                    width: 19,
                   ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  phone,
-                  style: GoogleFonts.beVietnamPro(
-                    color: const Color(0xFF4A4A4A),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    height: 0.09,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Telephone',
+                        style: GoogleFonts.beVietnamPro(
+                          color: const Color(0xFFA0A0A0),
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400,
+                          height: 0.14,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        phone,
+                        style: GoogleFonts.beVietnamPro(
+                          color: const Color(0xFF4A4A4A),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          height: 0.09,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Positioned(
-            top: 70,
-            left: 29,
-            child: SvgPicture.asset(telephoneIcon),
-          ),
-          Positioned(
-            bottom: 39,
-            left: 29,
-            child: SvgPicture.asset(mobileIcon),
-          ),
-          Positioned(
             bottom: 40,
-            left: 64,
+            left: 20,
             child: InkWell(
               onTap: () async {
                 final Uri url = Uri(scheme: 'tel', path: mobile);
@@ -100,29 +109,38 @@ class SupportCard extends StatelessWidget {
                   throw Exception('url cannnot be launched');
                 }
               },
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Mobile',
-                    style: GoogleFonts.beVietnamPro(
-                      color: const Color(0xFFA0A0A0),
-                      fontSize: 11,
-                      fontWeight: FontWeight.w400,
-                      height: 0.14,
-                    ),
-                  ),
+                  SvgPicture.asset(mobileIcon),
                   const SizedBox(
-                    height: 15,
+                    width: 19,
                   ),
-                  Text(
-                    mobile,
-                    style: GoogleFonts.beVietnamPro(
-                      color: const Color(0xFF4A4A4A),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      height: 0.09,
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Mobile',
+                        style: GoogleFonts.beVietnamPro(
+                          color: const Color(0xFFA0A0A0),
+                          fontSize: 11,
+                          fontWeight: FontWeight.w400,
+                          height: 0.14,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        mobile,
+                        style: GoogleFonts.beVietnamPro(
+                          color: const Color(0xFF4A4A4A),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          height: 0.09,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -171,10 +189,5 @@ class SupportCard extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Future<void> _launchPhone(String phoneNumber) async {
-    print("call back is pressed");
-    final url = phoneNumber;
   }
 }
