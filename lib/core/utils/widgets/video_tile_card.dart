@@ -53,14 +53,13 @@ class VideoTileCard extends StatelessWidget {
             top: 17,
             left: 30,
             child: Container(
-              width: 105,
               height: 23,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(11.5),
                 color: const Color(0x93ffffff),
               ),
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(11, 8.0, 0, 8.0),
+                padding: const EdgeInsets.fromLTRB(11, 8.0, 8, 8.0),
                 child: Row(
                   children: [
                     SvgPicture.asset(

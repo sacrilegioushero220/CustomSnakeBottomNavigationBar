@@ -31,37 +31,54 @@ class ResultsPage extends StatelessWidget {
                 : const SizedBox(
                     height: 5,
                   ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(
-                  style: ButtonStyle(
-                    foregroundColor:
-                        MaterialStateProperty.all<Color?>(Colors.blue),
-                    overlayColor: MaterialStateProperty.all<Color>(Colors.grey),
+            SizedBox(
+              width: 324,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    style: ButtonStyle(
+                      foregroundColor:
+                          MaterialStateProperty.all<Color?>(Colors.blue),
+                      overlayColor:
+                          MaterialStateProperty.all<Color>(Colors.grey),
+                    ),
+                    child: Container(
+                      width: 40,
+                      decoration: const BoxDecoration(),
+                      child: Text(
+                        "Back",
+                        textAlign: TextAlign.start,
+                        style: GoogleFonts.beVietnamPro(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          height: 0,
+                        ),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                   ),
-                  child: Text(
-                    "Back",
-                    style: GoogleFonts.beVietnamPro(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      height: 0,
+                  Expanded(
+                    child: SizedBox(
+                      width: 284,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          title,
+                          style: GoogleFonts.beVietnamPro(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            height: 1,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                Text(
-                  title,
-                  style: GoogleFonts.beVietnamPro(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    height: 0,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(
               height: 10,

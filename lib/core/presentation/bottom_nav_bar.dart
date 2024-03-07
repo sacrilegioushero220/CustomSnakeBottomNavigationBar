@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:jeevan_diabetes_app/core/presentation/screens.dart';
 import 'package:flutter_svg/flutter_svg.dart';
