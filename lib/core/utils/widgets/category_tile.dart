@@ -38,9 +38,8 @@ class CategoryTile extends StatelessWidget {
             bottom: 17,
             left: 25,
             child: Container(
-              height: 23,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(11.5),
+                borderRadius: BorderRadius.circular(15),
                 color: const Color(0xFF00AEEF),
               ),
               child: Padding(
@@ -50,17 +49,17 @@ class CategoryTile extends StatelessWidget {
                     SvgPicture.asset(
                       whiteTick,
                     ),
-                    const SizedBox(width: 1),
+                    const SizedBox(width: 5),
                     FittedBox(
-                      fit: BoxFit.fitWidth,
+                      // fit: BoxFit.fitWidth,
                       child: Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
+                          padding: const EdgeInsets.only(right: 20),
                           child: Text(
                             category,
                             style: GoogleFonts.beVietnamPro(
                               color: Colors.white,
-                              fontSize: 9,
+                              fontSize: 11,
                               fontWeight: FontWeight.w400,
                               height: 1,
                             ),

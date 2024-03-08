@@ -64,9 +64,11 @@ class ResultsPage extends StatelessWidget {
                     child: SizedBox(
                       width: 284,
                       child: FittedBox(
+                        alignment: Alignment.centerRight,
                         fit: BoxFit.scaleDown,
                         child: Text(
                           title,
+                          textAlign: TextAlign.right,
                           style: GoogleFonts.beVietnamPro(
                             color: Colors.black,
                             fontSize: 20,

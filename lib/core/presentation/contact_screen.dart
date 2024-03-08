@@ -46,7 +46,7 @@ class ContactScreen extends StatelessWidget {
                     );
                   } else if (state is ContactUsSuccessState) {
                     contactUs = state.contactUs;
-                    return Column(
+                    return ListView(
                       children: [
                         Text(
                           contactUs.description ?? '',

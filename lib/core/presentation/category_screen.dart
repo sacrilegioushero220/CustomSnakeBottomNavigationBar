@@ -86,9 +86,10 @@ class CategoryScreenState extends State<CategoryScreen> {
                       },
                     );
                   } else {
+                    context.read<ApiBloc>().add(CategoryListFetchEvent());
                     // Handle error state
                     return const Center(
-                      child: Text('Failed to fetch Category List'),
+                      child: CircularProgressIndicator(),
                     );
                   }
                 },
