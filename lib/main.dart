@@ -10,8 +10,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((value) => runApp(DevicePreview(
-            enabled: !kReleaseMode,
-            builder: (context) => const MainApp(), // Wrap your app
-          )));
+      .then((value) => runApp(const MainApp()));
 }
+
+
+// DevicePreview(
+//             enabled: !kReleaseMode,
+//             builder: (context) => const MainApp(), // Wrap your app
+//           )

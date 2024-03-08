@@ -12,6 +12,7 @@ class CustomSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String? query;
     final TextEditingController textEditingController = TextEditingController();
     return Padding(
       padding: const EdgeInsets.only(top: 15, bottom: 15),
@@ -31,24 +32,12 @@ class CustomSearchBar extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(15),
-              child: SvgPicture.asset(searchLens),
-            ),
             Expanded(
               child: TextField(
                 controller: textEditingController,
                 onSubmitted: (query) {
-                  // Dispatch a search event to the API Bloc
-                  context.read<ApiBloc>().add(SearchVideosEvent(query));
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ResultsPage(
-                                isSearchNeeded: true,
-                                title: "Search Results",
-                                future: ApiService().searchVideos(query),
-                              )));
+                  query = query;
+                  _searchSubmit(context, query);
                 },
                 decoration: InputDecoration(
                   hintText: 'Search a video here...',
@@ -66,9 +55,33 @@ class CustomSearchBar extends StatelessWidget {
                 cursorColor: Colors.black,
               ),
             ),
+            InkWell(
+              onTap: () {
+                query = textEditingController.text.trim();
+
+                _searchSubmit(context, query ?? "");
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(15),
+                child: SvgPicture.asset(searchLens),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
+}
+
+_searchSubmit(BuildContext context, String query) {
+  // Dispatch a search event to the API Bloc
+  context.read<ApiBloc>().add(SearchVideosEvent(query));
+  Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => ResultsPage(
+                isSearchNeeded: true,
+                title: "Search Results",
+                future: ApiService().searchVideos(query),
+              )));
 }
