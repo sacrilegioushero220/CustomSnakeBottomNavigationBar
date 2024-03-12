@@ -5,7 +5,6 @@ import 'package:jeevan_diabetes_app/core/Bloc/api_bloc/api_bloc.dart';
 import 'package:jeevan_diabetes_app/core/models/category_model/category.dart';
 import 'package:jeevan_diabetes_app/core/presentation/search_results_screen.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
-import 'package:jeevan_diabetes_app/core/utils/widgets/category_tile.dart';
 import 'package:jeevan_diabetes_app/network/api_service.dart';
 
 class CategoryScreen extends StatefulWidget {

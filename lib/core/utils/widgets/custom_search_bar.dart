@@ -58,7 +58,6 @@ class CustomSearchBar extends StatelessWidget {
             InkWell(
               onTap: () {
                 query = textEditingController.text.trim();
-
                 _searchSubmit(context, query ?? "");
               },
               child: Padding(

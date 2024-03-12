@@ -19,8 +19,8 @@ class VideoDetailScreen extends StatelessWidget {
       appBar: customAppBar(),
       body: Padding(
         padding: const EdgeInsets.only(
-          left: 18,
-          right: 18,
+          left: 5,
+          right: 5,
         ),
         child: Column(
           children: [
@@ -72,33 +72,36 @@ class VideoDetailScreen extends StatelessWidget {
                     subtitle: video.postedBy ?? '',
                     uri: video.videos,
                   ),
-                  const SizedBox(
-                    height: 50,
-                  ),
                   SizedBox(
                     width: 391,
-                    height: 200,
-                    child: Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'Description:\n',
-                            style: GoogleFonts.beVietnamPro(
-                              color: const Color(0xFF242A2F),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              height: 0.11,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: 5,
+                        right: 5,
+                      ),
+                      child: Text.rich(
+                        TextSpan(
+                          children: [
+                            const TextSpan(text: "\n"),
+                            TextSpan(
+                              text: 'Description:\n',
+                              style: GoogleFonts.beVietnamPro(
+                                color: const Color(0xFF242A2F),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                height: 0.11,
+                              ),
                             ),
-                          ),
-                          TextSpan(
-                            text: '\n${video.videoDescription}',
-                            style: GoogleFonts.beVietnamPro(
-                              color: const Color(0xFF242A2F),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w300,
+                            TextSpan(
+                              text: '\n${video.videoDescription}',
+                              style: GoogleFonts.beVietnamPro(
+                                color: const Color(0xFF242A2F),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w300,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   )
