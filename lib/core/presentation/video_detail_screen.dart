@@ -27,11 +27,14 @@ class VideoDetailScreen extends StatelessWidget {
             isSearchNeeded
                 ? const CustomSearchBar()
                 : const SizedBox(
-                    height: 5,
+                    height: 20,
                   ),
             Row(
               children: [
-                const CustomBackButton(),
+                const Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: CustomBackButton(),
+                ),
                 Text(
                   "",
                   style: GoogleFonts.beVietnamPro(
@@ -42,6 +45,9 @@ class VideoDetailScreen extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+            const SizedBox(
+              height: 20,
             ),
             Expanded(
               child: ListView(
@@ -101,34 +107,6 @@ class VideoDetailScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class CustomBackButton extends StatelessWidget {
-  const CustomBackButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      style: ButtonStyle(
-        alignment: Alignment.centerLeft,
-        foregroundColor: MaterialStateProperty.all<Color?>(Colors.blue),
-        overlayColor: MaterialStateProperty.all<Color>(Colors.grey),
-      ),
-      child: Text(
-        "Back",
-        style: GoogleFonts.beVietnamPro(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          height: 0,
-        ),
-      ),
-      onPressed: () {
-        Navigator.pop(context);
-      },
     );
   }
 }
