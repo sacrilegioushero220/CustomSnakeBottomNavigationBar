@@ -49,20 +49,29 @@ class HomeTile extends StatelessWidget {
                   onTap: onTap,
                 ),
           const SizedBox(
-            height: 50,
+            height: 20,
             width: 320,
           ),
-          Text(
-            title ?? "No title found",
-            maxLines: 2,
-            style: GoogleFonts.beVietnamPro(
-              color: Colors.black,
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: Text(
+              title ?? "No title found",
+              textAlign: TextAlign.justify,
+              maxLines: 2,
+              style: GoogleFonts.beVietnamPro(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 25),
+            padding: EdgeInsets.only(
+              top: 10,
+              bottom: 10,
+              left: isVideo ? 10 : 0,
+              right: 10,
+            ),
             child: Text(
               subtitle,
               style: GoogleFonts.beVietnamPro(
