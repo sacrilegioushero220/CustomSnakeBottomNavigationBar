@@ -32,12 +32,15 @@ class HomeTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           isVideo
-              ? Container(
-                  width: 350,
-                  height: 200,
-                  color: Colors.white,
-                  child: CustomVideoPlayer(
-                    uri: uri ?? "",
+              ? Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 200,
+                    color: Colors.black,
+                    child: CustomVideoPlayer(
+                      uri: uri ?? "",
+                    ),
                   ),
                 )
               : VideoTileCard(
@@ -50,9 +53,10 @@ class HomeTile extends StatelessWidget {
             width: 320,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 5, right: 5),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: Text(
               title ?? "No title found",
+              textAlign: TextAlign.justify,
               maxLines: 2,
               style: GoogleFonts.beVietnamPro(
                 color: Colors.black,
@@ -65,8 +69,8 @@ class HomeTile extends StatelessWidget {
             padding: const EdgeInsets.only(
               top: 10,
               bottom: 10,
-              left: 5,
-              right: 5,
+              left: 10,
+              right: 10,
             ),
             child: Text(
               subtitle,

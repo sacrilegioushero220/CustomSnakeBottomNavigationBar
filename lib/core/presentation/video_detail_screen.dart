@@ -30,26 +30,8 @@ class VideoDetailScreen extends StatelessWidget {
                     height: 5,
                   ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButton(
-                  style: ButtonStyle(
-                    foregroundColor:
-                        MaterialStateProperty.all<Color?>(Colors.blue),
-                    overlayColor: MaterialStateProperty.all<Color>(Colors.grey),
-                  ),
-                  child: Text(
-                    "Back",
-                    style: GoogleFonts.beVietnamPro(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      height: 0,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
+                const CustomBackButton(),
                 Text(
                   "",
                   style: GoogleFonts.beVietnamPro(
@@ -76,15 +58,16 @@ class VideoDetailScreen extends StatelessWidget {
                     width: 391,
                     child: Padding(
                       padding: const EdgeInsets.only(
-                        left: 5,
-                        right: 5,
+                        left: 10,
+                        right: 10,
                       ),
-                      child: Text.rich(
-                        TextSpan(
+                      child: RichText(
+                        textAlign: TextAlign.left,
+                        text: TextSpan(
                           children: [
                             const TextSpan(text: "\n"),
                             TextSpan(
-                              text: 'Description:\n',
+                              text: 'Description:',
                               style: GoogleFonts.beVietnamPro(
                                 color: const Color(0xFF242A2F),
                                 fontSize: 14,
@@ -92,12 +75,19 @@ class VideoDetailScreen extends StatelessWidget {
                                 height: 0.11,
                               ),
                             ),
-                            TextSpan(
-                              text: '\n${video.videoDescription}',
-                              style: GoogleFonts.beVietnamPro(
-                                color: const Color(0xFF242A2F),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w300,
+                            WidgetSpan(
+                              child: Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  '\n${video.videoDescription}',
+                                  maxLines: 10,
+                                  textAlign: TextAlign.justify,
+                                  style: GoogleFonts.beVietnamPro(
+                                    color: const Color(0xFF242A2F),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
                               ),
                             ),
                           ],
@@ -111,6 +101,34 @@ class VideoDetailScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class CustomBackButton extends StatelessWidget {
+  const CustomBackButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      style: ButtonStyle(
+        alignment: Alignment.centerLeft,
+        foregroundColor: MaterialStateProperty.all<Color?>(Colors.blue),
+        overlayColor: MaterialStateProperty.all<Color>(Colors.grey),
+      ),
+      child: Text(
+        "Back",
+        style: GoogleFonts.beVietnamPro(
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          height: 0,
+        ),
+      ),
+      onPressed: () {
+        Navigator.pop(context);
+      },
     );
   }
 }

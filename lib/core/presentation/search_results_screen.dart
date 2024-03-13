@@ -32,7 +32,6 @@ class ResultsPage extends StatelessWidget {
                     height: 5,
                   ),
             SizedBox(
-              width: 324,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
