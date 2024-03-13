@@ -42,7 +42,7 @@ class HomeTile extends StatelessWidget {
                   onTap: onTap,
                 ),
           const SizedBox(
-            height: 50,
+            height: 10,
             width: 320,
           ),
           Text(
@@ -55,7 +55,7 @@ class HomeTile extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 25),
+            padding: const EdgeInsets.only(top: 10),
             child: Text(
               subtitle,
               style: GoogleFonts.beVietnamPro(
