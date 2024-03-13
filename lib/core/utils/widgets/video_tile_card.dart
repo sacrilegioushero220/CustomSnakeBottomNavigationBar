@@ -30,7 +30,7 @@ class VideoTileCard extends StatelessWidget {
                 height: 337,
                 child: Image.network(
                   tilePic,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                   loadingBuilder: (context, child, loadingProgress) {
                     if (loadingProgress == null) {
                       return child;
