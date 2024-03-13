@@ -15,7 +15,7 @@ class CustomRoundedButton extends StatelessWidget {
       child: FittedBox(
         fit: BoxFit.scaleDown,
         child: Container(
-          width: 130,
+          width: 120,
           height: 40,
           decoration: ShapeDecoration(
             color: const Color(0xFF03A1E7),
@@ -29,7 +29,6 @@ class CustomRoundedButton extends StatelessWidget {
               right: 10,
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 FittedBox(
                   fit:BoxFit.scaleDown,
