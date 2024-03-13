@@ -32,7 +32,10 @@ PreferredSizeWidget customAppBar() {
             width: 10,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 1.0),
+            padding: const EdgeInsets.only(
+              top: 1.0,
+              left: 8,
+            ),
             child: FittedBox(
               fit: BoxFit
                   .scaleDown, // Scale down the text to fit within available space

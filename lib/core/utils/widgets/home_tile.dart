@@ -66,8 +66,12 @@ class HomeTile extends StatelessWidget {
             ),
           ),
           Padding(
-            padding:
-                const EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 10),
+            padding: EdgeInsets.only(
+              top: 10,
+              bottom: 10,
+              left: isVideo ? 10 : 0,
+              right: 10,
+            ),
             child: Text(
               subtitle,
               style: GoogleFonts.beVietnamPro(
