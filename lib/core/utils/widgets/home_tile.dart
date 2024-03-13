@@ -50,7 +50,7 @@ class HomeTile extends StatelessWidget {
             maxLines: 2,
             style: GoogleFonts.beVietnamPro(
               color: Colors.black,
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: FontWeight.w600,
             ),
           ),
