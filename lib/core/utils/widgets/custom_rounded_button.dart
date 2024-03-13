@@ -15,8 +15,8 @@ class CustomRoundedButton extends StatelessWidget {
       child: FittedBox(
         fit: BoxFit.scaleDown,
         child: Container(
-          width: 145,
-          height: 50,
+          width: 120,
+          height: 40,
           decoration: ShapeDecoration(
             color: const Color(0xFF03A1E7),
             shape: RoundedRectangleBorder(
@@ -29,7 +29,6 @@ class CustomRoundedButton extends StatelessWidget {
               right: 10,
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 FittedBox(
                   fit:BoxFit.scaleDown,
@@ -37,7 +36,7 @@ class CustomRoundedButton extends StatelessWidget {
                     "Watch Now",
                     style: GoogleFonts.beVietnamPro(
                       color: Colors.white,
-                      fontSize: 14,
+                      fontSize: 12,
                       fontWeight: FontWeight.w500,
                       height: 0,
                     ),
@@ -45,7 +44,7 @@ class CustomRoundedButton extends StatelessWidget {
                 ),
                 const Icon(
                   Icons.play_arrow,
-                  size: 30,
+                  size: 25,
                   color: Colors.white,
                 )
               ],

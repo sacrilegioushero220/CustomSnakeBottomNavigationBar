@@ -26,45 +26,48 @@ class VideoTileCard extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(21),
               child: SizedBox(
-                width: 391,
-                height: 337,
-                child: Image.network(
-                  tilePic,
-                  fit: BoxFit.contain,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) {
-                      return child;
-                    } else {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
-                                  loadingProgress.expectedTotalBytes!
-                              : null,
+                child: AspectRatio(
+                  aspectRatio: 5 / 3,
+                  child: Image.network(
+                    width: 500,
+                    height: 300,
+                    tilePic,
+                    fit: BoxFit.cover,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      } else {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes!
+                                : null,
+                          ),
+                        );
+                      }
+                    },
+                    errorBuilder: (context, exception, stackTrace) {
+                      return Container(
+                        width: 100,
+                        height: 100,
+                        color: Colors.grey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(Icons.error,
+                                color: Colors.red), // Placeholder icon
+                            const SizedBox(height: 8),
+                            Text(
+                              'Error loading image:\n$exception',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ],
                         ),
                       );
-                    }
-                  },
-                  errorBuilder: (context, exception, stackTrace) {
-                    return Container(
-                      width: 100,
-                      height: 100,
-                      color: Colors.grey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(Icons.error,
-                              color: Colors.red), // Placeholder icon
-                          const SizedBox(height: 8),
-                          Text(
-                            'Error loading image:\n$exception',
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
+                    },
+                  ),
                 ),
               ),
             ),
