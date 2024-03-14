@@ -31,7 +31,7 @@ class CustomRoundedButton extends StatelessWidget {
             child: Row(
               children: [
                 FittedBox(
-                  fit:BoxFit.scaleDown,
+                  fit: BoxFit.scaleDown,
                   child: Text(
                     "Watch Now",
                     style: GoogleFonts.beVietnamPro(
@@ -42,10 +42,12 @@ class CustomRoundedButton extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Icon(
-                  Icons.play_arrow,
-                  size: 25,
-                  color: Colors.white,
+                const Expanded(
+                  child: Icon(
+                    Icons.play_arrow,
+                    size: 25,
+                    color: Colors.white,
+                  ),
                 )
               ],
             ),

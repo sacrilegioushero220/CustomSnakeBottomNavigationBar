@@ -22,37 +22,41 @@ PreferredSizeWidget customAppBar() {
       backgroundColor: Colors.transparent,
       toolbarHeight: 70,
       automaticallyImplyLeading: false,
-      title: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 2),
-            child: SvgPicture.asset(snackBar),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 1.0,
-              left: 8,
+      title: SizedBox(
+        height: 27,
+        width: 310,
+        child: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 2),
+              child: SvgPicture.asset(snackBar),
             ),
-            child: FittedBox(
-              fit: BoxFit
-                  .scaleDown, // Scale down the text to fit within available space
-              child: Text(
-                "JEEVANS DIABETES & ENDOCRINOLOGY",
-                //textAlign: TextAlign.center,
-                style: GoogleFonts.koulen(
-                  textStyle: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 21,
-                    fontWeight: FontWeight.w400,
+            const SizedBox(
+              width: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 1.0,
+                left: 8,
+              ),
+              child: FittedBox(
+                fit: BoxFit
+                    .scaleDown, // Scale down the text to fit within available space
+                child: Text(
+                  "JEEVANS DIABETES & ENDOCRINOLOGY",
+                  //textAlign: TextAlign.center,
+                  style: GoogleFonts.koulen(
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 21,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     ),
   );
