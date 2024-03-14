@@ -49,19 +49,24 @@ class HomeTile extends StatelessWidget {
                   onTap: onTap,
                 ),
           const SizedBox(
-            height: 20,
+            height: 10,
             width: 320,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10),
+            padding: EdgeInsets.only(
+              left: isVideo ? 10 : 0,
+              right: isVideo ? 10 : 0,
+            ),
             child: Text(
               title ?? "No title found",
-              textAlign: TextAlign.justify,
-              maxLines: 2,
+              overflow: isVideo ? TextOverflow.visible : TextOverflow.ellipsis,
+              textAlign: TextAlign.start,
+              maxLines: isVideo ? 8 : 2,
               style: GoogleFonts.beVietnamPro(
                 color: Colors.black,
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: FontWeight.w600,
+                wordSpacing: 1,
               ),
             ),
           ),
@@ -70,7 +75,7 @@ class HomeTile extends StatelessWidget {
               top: 10,
               bottom: 10,
               left: isVideo ? 10 : 0,
-              right: 10,
+              right: isVideo ? 10 : 0,
             ),
             child: Text(
               subtitle,

@@ -27,9 +27,11 @@ PreferredSizeWidget customAppBar() {
         width: 310,
         child: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 2),
-              child: SvgPicture.asset(snackBar),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 2),
+                child: SvgPicture.asset(snackBar),
+              ),
             ),
             const SizedBox(
               width: 10,

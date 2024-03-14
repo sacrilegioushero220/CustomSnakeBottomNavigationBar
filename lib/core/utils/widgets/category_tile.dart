@@ -18,61 +18,65 @@ class CategoryTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
-      child: Stack(
-        children: [
-          InkWell(
-            onTap: onTap,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(21),
-              child: SizedBox(
-                width: 390,
-                height: 170,
-                child: Image.network(
-                  categoryImage,
-                  fit: BoxFit.cover,
+      child: Center(
+        child: Stack(
+          children: [
+            InkWell(
+              onTap: onTap,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(21),
+                child: SizedBox(
+                  width: 390,
+                  height: 170,
+                  child: Image.network(
+                    categoryImage,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) =>
+                        const CircularProgressIndicator.adaptive(),
+                  ),
                 ),
               ),
             ),
-          ),
-          Positioned(
-            bottom: 17,
-            left: 25,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: const Color(0xFF00AEEF),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(11, 8.0, 0, 8.0),
-                child: Row(
-                  children: [
-                    SvgPicture.asset(
-                      whiteTick,
-                    ),
-                    const SizedBox(width: 5),
-                    FittedBox(
-                      // fit: BoxFit.fitWidth,
-                      child: Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 20),
-                          child: Text(
-                            category,
-                            style: GoogleFonts.beVietnamPro(
-                              color: Colors.white,
-                              fontSize: 11,
-                              fontWeight: FontWeight.w400,
-                              height: 1,
+            Positioned(
+              bottom: 17,
+              left: 25,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color(0xFF00AEEF),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(11, 8.0, 0, 8.0),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        whiteTick,
+                      ),
+                      const SizedBox(width: 5),
+                      FittedBox(
+                        // fit: BoxFit.fitWidth,
+                        child: Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 20),
+                            child: Text(
+                              category,
+                              style: GoogleFonts.beVietnamPro(
+                                color: Colors.white,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w400,
+                                height: 1,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
