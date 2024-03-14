@@ -13,6 +13,9 @@ String contact = "assets/Contact.svg";
 String home = "assets/home.svg";
 String mainLogo = "assets/jeevans_logo.png";
 String splashBg = "assets/splash_bg.png";
+String homePlaceHolder = "assets/about.jpg";
+String aboutPlaceHolder = "assets/placeHolder2.jpg";
+String placeHolder = "assets/placeholder.jpg";
 
 //About Screen
 String facebookIcon = "assets/facebook_icon_white.svg";

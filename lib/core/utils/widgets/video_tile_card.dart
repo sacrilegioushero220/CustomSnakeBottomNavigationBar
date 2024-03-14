@@ -48,26 +48,10 @@ class VideoTileCard extends StatelessWidget {
                       }
                     },
                     errorBuilder: (context, exception, stackTrace) {
-                      return const Center(
-                          child: CircularProgressIndicator.adaptive());
-                      // return Container(
-                      //   width: 100,
-                      //   height: 100,
-                      //   color: Colors.grey,
-                      //   child: Column(
-                      //     mainAxisAlignment: MainAxisAlignment.center,
-                      //     children: [
-                      //       const Icon(Icons.error,
-                      //           color: Colors.red), // Placeholder icon
-                      //       const SizedBox(height: 8),
-                      //       Text(
-                      //         'Error loading image:\n$exception',
-                      //         textAlign: TextAlign.center,
-                      //         style: const TextStyle(color: Colors.white),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // );
+                      return Image.asset(
+                        homePlaceHolder,
+                        fit: BoxFit.cover,
+                      );
                     },
                   ),
                 ),

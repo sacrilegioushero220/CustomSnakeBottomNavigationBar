@@ -31,8 +31,10 @@ class CategoryTile extends StatelessWidget {
                   child: Image.network(
                     categoryImage,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) =>
-                        const CircularProgressIndicator.adaptive(),
+                    errorBuilder: (context, error, stackTrace) => Image.asset(
+                      placeHolder,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
