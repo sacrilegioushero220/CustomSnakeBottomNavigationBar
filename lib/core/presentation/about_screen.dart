@@ -62,7 +62,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     context.read<ApiBloc>().add(AboutUsFetchEvent());
                     // Handle error state
                     return const Center(
-                      child: Text('Failed to fetch About Us'),
+                      child: CircularProgressIndicator.adaptive(),
                     );
                   }
                 },

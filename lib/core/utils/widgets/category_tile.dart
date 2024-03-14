@@ -55,17 +55,15 @@ class CategoryTile extends StatelessWidget {
                       const SizedBox(width: 5),
                       FittedBox(
                         // fit: BoxFit.fitWidth,
-                        child: Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 20),
-                            child: Text(
-                              category,
-                              style: GoogleFonts.beVietnamPro(
-                                color: Colors.white,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w400,
-                                height: 1,
-                              ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 20),
+                          child: Text(
+                            category,
+                            style: GoogleFonts.beVietnamPro(
+                              color: Colors.white,
+                              fontSize: 11,
+                              fontWeight: FontWeight.w400,
+                              height: 1,
                             ),
                           ),
                         ),

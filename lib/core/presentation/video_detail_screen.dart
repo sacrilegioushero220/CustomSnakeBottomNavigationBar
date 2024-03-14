@@ -85,7 +85,7 @@ class VideoDetailScreen extends StatelessWidget {
                               child: Align(
                                 alignment: Alignment.topLeft,
                                 child: Text(
-                                  '\n${video.videoDescription}',
+                                  '\n${video.videoDescription}\n',
                                   textAlign: TextAlign.justify,
                                   style: GoogleFonts.beVietnamPro(
                                     color: const Color(0xFF242A2F),

@@ -24,6 +24,20 @@ class CustomImageCard extends StatelessWidget {
         width: 390,
         height: 170,
         child: Image.network(
+          loadingBuilder: (context, child, loadingProgress) {
+            if (loadingProgress == null) {
+              return child;
+            } else {
+              return Center(
+                child: CircularProgressIndicator(
+                  value: loadingProgress.expectedTotalBytes != null
+                      ? loadingProgress.cumulativeBytesLoaded /
+                          loadingProgress.expectedTotalBytes!
+                      : null,
+                ),
+              );
+            }
+          },
           errorBuilder: (context, exception, stackTrace) {
             return Container(
               width: 100,

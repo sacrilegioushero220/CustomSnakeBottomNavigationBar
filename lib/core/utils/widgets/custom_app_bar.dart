@@ -34,24 +34,27 @@ PreferredSizeWidget customAppBar() {
               ),
             ),
             const SizedBox(
-              width: 10,
+              width: 2,
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 1.0,
-                left: 8,
-              ),
-              child: FittedBox(
-                fit: BoxFit
-                    .scaleDown, // Scale down the text to fit within available space
-                child: Text(
-                  "JEEVANS DIABETES & ENDOCRINOLOGY",
-                  //textAlign: TextAlign.center,
-                  style: GoogleFonts.koulen(
-                    textStyle: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 21,
-                      fontWeight: FontWeight.w400,
+            Expanded(
+              flex: 15,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 1.0,
+                  left: 8,
+                ),
+                child: FittedBox(
+                  fit: BoxFit
+                      .scaleDown, // Scale down the text to fit within available space
+                  child: Text(
+                    "JEEVANS DIABETES & ENDOCRINOLOGY",
+                    //textAlign: TextAlign.center,
+                    style: GoogleFonts.koulen(
+                      textStyle: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 21,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
                 ),

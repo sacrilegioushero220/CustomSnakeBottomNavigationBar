@@ -88,7 +88,7 @@ class ContactScreen extends StatelessWidget {
                   } else {
                     // Handle error state
                     return const Center(
-                      child: Text('Failed to fetch Category List'),
+                      child: CircularProgressIndicator.adaptive(),
                     );
                   }
                 },
