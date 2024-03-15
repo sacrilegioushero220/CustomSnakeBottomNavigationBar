@@ -42,7 +42,9 @@ class ContactScreen extends StatelessWidget {
                 builder: (context, state) {
                   if (state is ApiLoadingState) {
                     return const Center(
-                      child: CircularProgressIndicator(),
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                      ),
                     );
                   } else if (state is ContactUsSuccessState) {
                     contactUs = state.contactUs;
@@ -88,7 +90,9 @@ class ContactScreen extends StatelessWidget {
                   } else {
                     // Handle error state
                     return const Center(
-                      child: CircularProgressIndicator.adaptive(),
+                      child: CircularProgressIndicator.adaptive(
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                      ),
                     );
                   }
                 },

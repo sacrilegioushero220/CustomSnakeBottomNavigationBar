@@ -64,7 +64,10 @@ class CategoryScreenState extends State<CategoryScreen> {
                   builder: (context, state) {
                     if (state is ApiLoadingState) {
                       return const Center(
-                        child: CircularProgressIndicator(),
+                        child: CircularProgressIndicator(
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.blue),
+                        ),
                       );
                     } else if (state is CategorySuccessState) {
                       final categoryList = state.category;
@@ -98,7 +101,10 @@ class CategoryScreenState extends State<CategoryScreen> {
                       context.read<ApiBloc>().add(CategoryListFetchEvent());
                       // Handle error state
                       return const Center(
-                        child: CircularProgressIndicator(),
+                        child: CircularProgressIndicator(
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.blue),
+                        ),
                       );
                     }
                   },

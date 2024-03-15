@@ -36,7 +36,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildBody(ApiState state) {
     if (state is ApiLoadingState) {
       // Loading state
-      return const Center(child: CircularProgressIndicator());
+      return const Center(
+          child: CircularProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+      ));
     } else if (state is ApiSuccessState) {
       // Success state
       final videos = state.video;

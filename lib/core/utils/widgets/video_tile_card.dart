@@ -39,6 +39,8 @@ class VideoTileCard extends StatelessWidget {
                       } else {
                         return Center(
                           child: CircularProgressIndicator(
+                            valueColor: const AlwaysStoppedAnimation<Color>(
+                                Colors.blue),
                             value: loadingProgress.expectedTotalBytes != null
                                 ? loadingProgress.cumulativeBytesLoaded /
                                     loadingProgress.expectedTotalBytes!

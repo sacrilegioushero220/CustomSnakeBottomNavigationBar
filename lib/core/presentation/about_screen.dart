@@ -42,7 +42,9 @@ class _AboutScreenState extends State<AboutScreen> {
                 builder: (context, state) {
                   if (state is ApiLoadingState) {
                     return const Center(
-                      child: CircularProgressIndicator(),
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                      ),
                     );
                   } else if (state is AboutUsSuccessState) {
                     final aboutUsList = state.aboutUs;
@@ -62,7 +64,9 @@ class _AboutScreenState extends State<AboutScreen> {
                     context.read<ApiBloc>().add(AboutUsFetchEvent());
                     // Handle error state
                     return const Center(
-                      child: CircularProgressIndicator.adaptive(),
+                      child: CircularProgressIndicator.adaptive(
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                      ),
                     );
                   }
                 },
