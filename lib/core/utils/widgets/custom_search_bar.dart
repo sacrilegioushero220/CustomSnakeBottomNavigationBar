@@ -6,14 +6,17 @@ import 'package:jeevan_diabetes_app/core/Bloc/api_bloc/api_bloc.dart';
 import 'package:jeevan_diabetes_app/core/presentation/search_results_screen.dart';
 import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
 import 'package:jeevan_diabetes_app/network/api_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomSearchBar extends StatelessWidget {
-  const CustomSearchBar({super.key});
+  final String? searchedKeyword;
+  const CustomSearchBar({super.key, this.searchedKeyword});
 
   @override
   Widget build(BuildContext context) {
     String? query;
-    final TextEditingController textEditingController = TextEditingController();
+    final TextEditingController textEditingController =
+        TextEditingController(text: searchedKeyword);
     return Padding(
       padding: const EdgeInsets.only(top: 15, bottom: 15),
       child: Container(
@@ -75,12 +78,16 @@ class CustomSearchBar extends StatelessWidget {
 _searchSubmit(BuildContext context, String query) {
   // Dispatch a search event to the API Bloc
   context.read<ApiBloc>().add(SearchVideosEvent(query));
+
   Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => ResultsPage(
-                isSearchNeeded: true,
-                title: "Search Results",
-                future: ApiService().searchVideos(query),
-              )));
+    context,
+    MaterialPageRoute(
+      builder: (context) => ResultsPage(
+        isSearchNeeded: true,
+        title: "Search Results",
+        searchedKeyword: query, // Pass the searched keyword to the ResultsPage
+        future: ApiService().searchVideos(query),
+      ),
+    ),
+  );
 }

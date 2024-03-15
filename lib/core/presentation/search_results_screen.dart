@@ -8,12 +8,14 @@ class ResultsPage extends StatelessWidget {
   final String title;
   final Future<List<Video>>? future;
   final bool isSearchNeeded;
+  final String? searchedKeyword;
 
   const ResultsPage(
       {super.key,
       required this.title,
       required this.future,
-      required this.isSearchNeeded});
+      required this.isSearchNeeded,
+      this.searchedKeyword});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class ResultsPage extends StatelessWidget {
         child: Column(
           children: [
             isSearchNeeded
-                ? const CustomSearchBar()
+                ? CustomSearchBar(searchedKeyword: searchedKeyword)
                 : const SizedBox(
                     height: 20,
                   ),
