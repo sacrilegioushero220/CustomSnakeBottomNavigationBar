@@ -51,6 +51,7 @@ class ApiService {
   Future<List<Video>> searchVideos(String keyword) async {
     final response = await _post(searchVideosUri, {'keyword': keyword});
     final List<dynamic> data = json.decode(response.body)['data']['Video'];
+    print("data:$data");
     return data.map((json) => Video.fromJson(json)).toList();
   }
 

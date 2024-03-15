@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jeevan_diabetes_app/core/Bloc/api_bloc/api_bloc.dart';
-import 'package:jeevan_diabetes_app/core/presentation/search_results_screen.dart';
 import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
-import 'package:jeevan_diabetes_app/network/api_service.dart';
 
 class CustomSearchBar extends StatefulWidget {
   final String? searchedKeyword;
@@ -63,7 +59,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
               child: TextField(
                 controller: _textEditingController,
                 onSubmitted: (query) {
-                  widget.onSearch(query);
+                  _performSearch(query);
                 },
                 decoration: InputDecoration(
                   hintText: 'Search a video here...',
@@ -83,7 +79,18 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
             ),
             InkWell(
               onTap: () {
-                widget.onSearch(_textEditingController.text.trim());
+                final String query = _textEditingController.text.trim();
+                if (query.isNotEmpty) {
+                  widget.onSearch(query);
+                } else {
+                  // Handle the case when the search keyword is empty or null
+                  // For example, you can show a snackbar or perform any other action
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Please enter a valid search keyword'),
+                    ),
+                  );
+                }
               },
               child: Padding(
                 padding: const EdgeInsets.all(15),
@@ -94,5 +101,19 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
         ),
       ),
     );
+  }
+
+  void _performSearch(String query) {
+    if (query.isNotEmpty) {
+      widget.onSearch(query);
+    } else {
+      // Handle the case when the search keyword is empty or null
+      // For example, you can show a snackbar or perform any other action
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please enter a valid search keyword'),
+        ),
+      );
+    }
   }
 }
