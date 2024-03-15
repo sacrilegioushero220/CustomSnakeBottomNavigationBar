@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/Bloc/api_bloc/api_bloc.dart';
 import 'package:jeevan_diabetes_app/core/models/category_model/category.dart';
+import 'package:jeevan_diabetes_app/core/presentation/home_screen.dart';
 import 'package:jeevan_diabetes_app/core/presentation/search_results_screen.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
 import 'package:jeevan_diabetes_app/network/api_service.dart';
@@ -36,7 +37,11 @@ class CategoryScreenState extends State<CategoryScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const CustomSearchBar(),
+              CustomSearchBar(
+                onSearch: (query) {
+                  searchSubmit(context, query);
+                },
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [

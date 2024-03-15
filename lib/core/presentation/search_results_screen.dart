@@ -3,19 +3,28 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/models/models.dart';
 import 'package:jeevan_diabetes_app/core/presentation/video_detail_screen.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
+import 'package:jeevan_diabetes_app/network/api_service.dart';
 
-class ResultsPage extends StatelessWidget {
+class ResultsPage extends StatefulWidget {
   final String title;
   final Future<List<Video>>? future;
   final bool isSearchNeeded;
   final String? searchedKeyword;
 
-  const ResultsPage(
-      {super.key,
-      required this.title,
-      required this.future,
-      required this.isSearchNeeded,
-      this.searchedKeyword});
+  const ResultsPage({
+    super.key,
+    required this.title,
+    required this.future,
+    required this.isSearchNeeded,
+    this.searchedKeyword,
+  });
+
+  @override
+  _ResultsPageState createState() => _ResultsPageState();
+}
+
+class _ResultsPageState extends State<ResultsPage> {
+  String? query;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +37,15 @@ class ResultsPage extends StatelessWidget {
         ),
         child: Column(
           children: [
-            isSearchNeeded
-                ? CustomSearchBar(searchedKeyword: searchedKeyword)
+            widget.isSearchNeeded
+                ? CustomSearchBar(
+                    searchedKeyword: widget.searchedKeyword,
+                    onSearch: (query) {
+                      setState(() {
+                        this.query = query;
+                      });
+                    },
+                  )
                 : const SizedBox(
                     height: 20,
                   ),
@@ -45,7 +61,7 @@ class ResultsPage extends StatelessWidget {
                         alignment: Alignment.centerRight,
                         fit: BoxFit.scaleDown,
                         child: Text(
-                          title,
+                          widget.title,
                           textAlign: TextAlign.right,
                           style: GoogleFonts.beVietnamPro(
                             color: Colors.black,
@@ -65,7 +81,9 @@ class ResultsPage extends StatelessWidget {
             ),
             Expanded(
               child: FutureBuilder<List<Video>>(
-                future: future,
+                future: query != null
+                    ? ApiService().searchVideos(query!)
+                    : widget.future,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
@@ -95,7 +113,7 @@ class ResultsPage extends StatelessWidget {
                                 builder: (ctx) => VideoDetailScreen(
                                   isSearchNeeded: false,
                                   video: video,
-                                  title: title,
+                                  title: widget.title,
                                 ),
                               ),
                             );

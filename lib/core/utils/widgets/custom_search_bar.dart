@@ -6,17 +6,41 @@ import 'package:jeevan_diabetes_app/core/Bloc/api_bloc/api_bloc.dart';
 import 'package:jeevan_diabetes_app/core/presentation/search_results_screen.dart';
 import 'package:jeevan_diabetes_app/core/utils/const/paths.dart';
 import 'package:jeevan_diabetes_app/network/api_service.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-class CustomSearchBar extends StatelessWidget {
+class CustomSearchBar extends StatefulWidget {
   final String? searchedKeyword;
-  const CustomSearchBar({super.key, this.searchedKeyword});
+  final Function(String) onSearch;
+
+  const CustomSearchBar({
+    super.key,
+    this.searchedKeyword,
+    required this.onSearch,
+  });
+
+  @override
+  _CustomSearchBarState createState() => _CustomSearchBarState();
+}
+
+class _CustomSearchBarState extends State<CustomSearchBar> {
+  late TextEditingController _textEditingController;
+
+  @override
+  void initState() {
+    super.initState();
+    _textEditingController =
+        TextEditingController(text: widget.searchedKeyword);
+  }
+
+  @override
+  void didUpdateWidget(covariant CustomSearchBar oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.searchedKeyword != oldWidget.searchedKeyword) {
+      _textEditingController.text = widget.searchedKeyword ?? '';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    String? query;
-    final TextEditingController textEditingController =
-        TextEditingController(text: searchedKeyword);
     return Padding(
       padding: const EdgeInsets.only(top: 15, bottom: 15),
       child: Container(
@@ -37,10 +61,9 @@ class CustomSearchBar extends StatelessWidget {
           children: [
             Expanded(
               child: TextField(
-                controller: textEditingController,
+                controller: _textEditingController,
                 onSubmitted: (query) {
-                  query = query;
-                  _searchSubmit(context, query);
+                  widget.onSearch(query);
                 },
                 decoration: InputDecoration(
                   hintText: 'Search a video here...',
@@ -60,8 +83,7 @@ class CustomSearchBar extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                query = textEditingController.text.trim();
-                _searchSubmit(context, query ?? "");
+                widget.onSearch(_textEditingController.text.trim());
               },
               child: Padding(
                 padding: const EdgeInsets.all(15),
@@ -73,21 +95,4 @@ class CustomSearchBar extends StatelessWidget {
       ),
     );
   }
-}
-
-_searchSubmit(BuildContext context, String query) {
-  // Dispatch a search event to the API Bloc
-  context.read<ApiBloc>().add(SearchVideosEvent(query));
-
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => ResultsPage(
-        isSearchNeeded: true,
-        title: "Search Results",
-        searchedKeyword: query, // Pass the searched keyword to the ResultsPage
-        future: ApiService().searchVideos(query),
-      ),
-    ),
-  );
 }

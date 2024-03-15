@@ -25,7 +25,9 @@ class VideoDetailScreen extends StatelessWidget {
         child: Column(
           children: [
             isSearchNeeded
-                ? const CustomSearchBar()
+                ? CustomSearchBar(
+                    onSearch: (String) {},
+                  )
                 : const SizedBox(
                     height: 20,
                   ),

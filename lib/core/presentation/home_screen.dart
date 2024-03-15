@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jeevan_diabetes_app/core/Bloc/api_bloc/api_bloc.dart';
+import 'package:jeevan_diabetes_app/core/presentation/search_results_screen.dart';
 import 'package:jeevan_diabetes_app/core/presentation/video_detail_screen.dart';
 import 'package:jeevan_diabetes_app/core/utils/utils.dart';
+import 'package:jeevan_diabetes_app/network/api_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -51,7 +53,11 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           child: Column(
             children: [
-              const CustomSearchBar(),
+              CustomSearchBar(
+                onSearch: (query) {
+                  searchSubmit(context, query);
+                },
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -117,4 +123,23 @@ class _HomeScreenState extends State<HomeScreen> {
       return const SizedBox();
     }
   }
+}
+
+// Define searchSubmit function
+void searchSubmit(BuildContext context, String query) {
+  // Dispatch a search event to the API Bloc
+  context.read<ApiBloc>().add(SearchVideosEvent(query));
+
+  // Navigate to a new ResultsPage with the search results
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => ResultsPage(
+        isSearchNeeded: true,
+        title: "Search Results",
+        searchedKeyword: query, // Pass the searched keyword to the ResultsPage
+        future: ApiService().searchVideos(query),
+      ),
+    ),
+  );
 }
