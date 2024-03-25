@@ -107,15 +107,15 @@ class _HomeState extends State<Home> {
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,
             snakeShape: SnakeShape.custom.copyWith(
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.horizontal(
-                    left:
-                        Radius.circular(35.5), // Adjust to create an oval shape
-                    right:
-                        Radius.circular(35.5), // Adjust to create an oval shape
-                  ),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.horizontal(
+                  left: Radius.circular(35.5), // Adjust to create an oval shape
+                  right:
+                      Radius.circular(35.5), // Adjust to create an oval shape
                 ),
-                centered: false),
+              ),
+              centered: false,
+            ),
           ),
         ),
       ),
